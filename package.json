@@ -1,0 +1,17 @@
+{
+  "name": "the-forge-website",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Forge — marketing website + lightweight CMS for the UK food & drink challenger-brand network.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/netlify": "^6.6.5",
+    "astro": "^5.16.2"
+  }
+}

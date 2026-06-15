@@ -1,0 +1,183 @@
+---
+import Base from '../layouts/Base.astro';
+import { getSettings, getMembers } from '../lib/content';
+
+const { site, criteria } = await getSettings();
+const members = await getMembers();
+const email = site.contactEmail ?? 'hello@weforgepartnerships.com';
+const applyHref = `mailto:${email}?subject=${encodeURIComponent('Brand application · The Forge')}`;
+
+// The marquee renders the member list twice for a seamless loop.
+const loop = [...members, ...members];
+
+const membershipCards = [
+  { n: '01', title: 'Introductions that land', body: 'One to three a month, matched by a human to your stage and channel. Never a mailout, never a list.' },
+  { n: '02', title: 'Founders dinners', body: 'Eight to a table, off the record, in Norfolk. The people worth knowing, and a long evening to do it properly.' },
+  { n: '03', title: 'Insight worth reading', body: 'Quarterly briefs on category, retail buyers, distribution and the capital landscape. Read, not skimmed.' },
+  { n: '04', title: 'Workshops that move you on', body: 'Three a year with Tastebuds, on brand, content and execution. Built for people who already trade.' },
+  { n: '05', title: 'A proper welcome', body: 'A printed welcome book, hand delivered. A founder pack. A directory page that is yours.' },
+  { n: '06', title: 'One place for everything', body: 'Profile, intros, calendar and contacts in one place, backed up to your own Google Drive.' },
+];
+
+const headStyle = `
+  @keyframes forgeMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (max-width: 880px) {
+    .forge-nav-links { display: none !important; }
+    .forge-grid-2 { grid-template-columns: 1fr !important; }
+    .forge-grid-3 { grid-template-columns: 1fr !important; }
+    .forge-pad { padding-left: 22px !important; padding-right: 22px !important; }
+  }
+  .forge-marquee:hover [data-marquee-track] { animation-play-state: paused; }
+`;
+---
+
+<Base
+  title="The Forge — for food & drink challenger brands"
+  description="Free, by application. A curated network for UK food and drink founders, with warm introductions made by hand, founders dinners, insight and workshops."
+  bodyBackground="#FBFCF4"
+  selectionBg="#1E1BD1"
+  selectionColor="#EBF5A6"
+  path="/brands"
+  headStyle={headStyle}
+>
+  <div style="font-family: 'Montserrat', -apple-system, sans-serif; color: #14141C; background: #FBFCF4; position: relative; overflow-x: hidden; -webkit-font-smoothing: antialiased;">
+
+    <!-- ============ NAV ============ -->
+    <nav style="position: sticky; top: 0; z-index: 100; background: rgba(251,252,244,0.88); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(20,20,28,0.08);">
+      <div class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 16px 44px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <a href="/" style="text-decoration: none; font-family: 'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900; font-style: italic; font-size: 25px; letter-spacing: -0.045em; color: #1E1BD1; line-height: 1;">TheForge</a>
+          <span style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: 17px; color: #44444F;">the brand room</span>
+        </div>
+        <div class="forge-nav-links" style="display: flex; align-items: center; gap: 32px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #44444F;">
+          <a href="#membership" style="text-decoration: none;">Membership</a>
+          <a href="#yes" style="text-decoration: none;">Who we say yes to</a>
+          <a href="#members" style="text-decoration: none;">The members</a>
+          <a href="/" style="text-decoration: none;">← Back to the hall</a>
+        </div>
+        <a href="#apply" class="pill-indigo" style="text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 11px 20px; border-radius: 999px; background: #1E1BD1; color: #FFFFFF; transition: background 0.15s;">Apply to join</a>
+      </div>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <header style="background: linear-gradient(180deg, #EBF5A6 0%, #F4F8E3 100%); border-bottom: 1px solid rgba(20,20,28,0.08);">
+      <div class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 96px 44px 90px;">
+        <div data-reveal style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #1E1BD1; margin-bottom: 30px;">For challenger brands · Free, by application</div>
+        <h1 data-reveal style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(36px, 5.6vw, 74px); line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 22px; max-width: 980px; text-wrap: pretty;">You did not start a brand to spend your evenings cold emailing co packers.</h1>
+        <p data-reveal style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: clamp(24px, 3vw, 36px); line-height: 1.18; color: #1E1BD1; margin: 0 0 30px; max-width: 600px;">we know. we have been on your side of the table.</p>
+        <p data-reveal style="font-family: 'Montserrat', sans-serif; font-size: clamp(16px, 1.7vw, 18px); font-weight: 500; line-height: 1.7; color: #2C2C36; margin: 0 0 38px; max-width: 560px; text-wrap: pretty;">The Forge is the network we wished existed when we were where you are. A named human learns your stage, your channels and what you actually need this quarter, then makes the introductions that go somewhere. The room, not a database.</p>
+        <div data-reveal style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+          <a href="#apply" class="pill-indigo" style="text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 16px 30px; border-radius: 999px; background: #1E1BD1; color: #FFFFFF; transition: background 0.15s;">Apply to join</a>
+          <span style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; color: #44444F;">Free to join. Always by application.</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ IN THE ROOM ALREADY ============ -->
+    <section id="members" style="padding: 92px 0 96px; overflow: hidden;">
+      <div class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 0 44px 50px;">
+        <div data-reveal style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #1E1BD1; margin-bottom: 24px;">In the room already</div>
+        <div class="forge-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end;">
+          <h2 data-reveal style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(30px, 4.2vw, 52px); line-height: 1.05; letter-spacing: -0.025em; margin: 0; text-wrap: pretty;">The founding members are taking their seats.</h2>
+          <p data-reveal style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: clamp(21px, 2.4vw, 27px); line-height: 1.25; color: #1E1BD1; margin: 0; max-width: 440px;">these are the people you will be sat next to.</p>
+        </div>
+      </div>
+
+      <div data-reveal class="forge-marquee" style="position: relative;">
+        <div style="overflow: hidden;">
+          <div data-marquee-track style="display: inline-flex; animation: forgeMarquee 48s linear infinite; will-change: transform;">
+            {loop.map((m) => (
+              <div style="width: 330px; flex-shrink: 0; margin-right: 18px; background: #FFFFFF; border: 1px solid rgba(20,20,28,0.1); border-radius: 16px; overflow: hidden; box-shadow: 0 14px 36px rgba(20,20,28,0.07);">
+                {m.photo ? (
+                  <div style="position: relative;">
+                    <img src={m.photo} alt={`${m.brand} — ${m.person}`} loading="lazy" style="display: block; width: 100%; height: 235px; object-fit: cover;" />
+                    <div style="position: absolute; left: 14px; bottom: 14px; font-family: 'Montserrat', sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; background: rgba(251,252,244,0.92); color: #14141C; border-radius: 999px;">{m.place}</div>
+                  </div>
+                ) : (
+                  <div style="position: relative; height: 235px; background: repeating-linear-gradient(135deg, #F4F8E3 0px, #F4F8E3 11px, #FBFCF4 11px, #FBFCF4 22px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;">
+                    <div style="width: 58px; height: 58px; border-radius: 50%; background: #EBF5A6; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.02em; color: #1E1BD1;">{m.initials}</div>
+                    <span style="font-family: 'Montserrat', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8A8A95;">Photo on its way</span>
+                    <div style="position: absolute; left: 14px; bottom: 14px; font-family: 'Montserrat', sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; background: rgba(251,252,244,0.92); border: 1px solid rgba(20,20,28,0.08); color: #14141C; border-radius: 999px;">{m.place}</div>
+                  </div>
+                )}
+                <div style="padding: 22px 26px 24px;">
+                  <div style="font-family: 'Arial Black', Helvetica, sans-serif; font-weight: 900; font-style: italic; font-size: 22px; letter-spacing: -0.035em; color: #1E1BD1; line-height: 1; margin-bottom: 6px;">{m.brand}</div>
+                  <div style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; color: #44444F; margin-bottom: 12px;">{m.person}</div>
+                  <p style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.3; color: #2C2C36; margin: 0; min-height: 50px;">{m.line}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div style="position: absolute; top: 0; bottom: 0; left: 0; width: 90px; background: linear-gradient(90deg, #FBFCF4 0%, rgba(251,252,244,0) 100%); pointer-events: none;"></div>
+        <div style="position: absolute; top: 0; bottom: 0; right: 0; width: 90px; background: linear-gradient(270deg, #FBFCF4 0%, rgba(251,252,244,0) 100%); pointer-events: none;"></div>
+      </div>
+    </section>
+
+    <!-- ============ MEMBERSHIP ============ -->
+    <section id="membership" class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 100px 44px;">
+      <div data-reveal style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #1E1BD1; margin-bottom: 24px;">What membership holds</div>
+      <h2 data-reveal style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(30px, 4.2vw, 54px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 56px; max-width: 760px; text-wrap: pretty;">Everything is made by hand. Including the introductions.</h2>
+
+      <div data-reveal class="forge-grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(20,20,28,0.1); border: 1px solid rgba(20,20,28,0.1); border-radius: 16px; overflow: hidden;">
+        {membershipCards.map((c) => (
+          <div style="background: #FFFFFF; padding: 34px 32px;">
+            <div style="font-family: 'Arial Black', Helvetica, sans-serif; font-weight: 900; font-style: italic; font-size: 30px; color: #1E1BD1; letter-spacing: -0.04em; margin-bottom: 16px;">{c.n}</div>
+            <h3 style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 9px;">{c.title}</h3>
+            <p style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 500; line-height: 1.6; color: #44444F; margin: 0;">{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ============ WHO WE SAY YES TO ============ -->
+    <section id="yes" style="background: #EBF5A6; border-top: 1px solid rgba(20,20,28,0.08);">
+      <div class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 100px 44px;">
+        <div class="forge-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+          <div data-reveal>
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #1E1BD1; margin-bottom: 24px;">Who we say yes to</div>
+            <h2 style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(30px, 4.2vw, 52px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 18px; text-wrap: pretty;">Curated means we say no. That is what makes the yes worth having.</h2>
+            <p style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.22; color: #1E1BD1; margin: 0; max-width: 480px;">if this sounds like you, we would like to read your application.</p>
+          </div>
+          <div data-reveal style="background: #FFFFFF; border: 1px solid rgba(20,20,28,0.1); border-radius: 16px; padding: 36px 38px; box-shadow: 0 24px 60px rgba(20,20,28,0.1);">
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #1E1BD1; margin-bottom: 22px;">The shape of a member</div>
+            <div>
+              <div style="display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; border-bottom: 1px solid rgba(20,20,28,0.1);"><span style="font-size: 14px; font-weight: 500; color: #44444F;">Annual revenue</span><span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #14141C;">{criteria.revenue}</span></div>
+              <div style="display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; border-bottom: 1px solid rgba(20,20,28,0.1);"><span style="font-size: 14px; font-weight: 500; color: #44444F;">Trading</span><span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #14141C;">{criteria.trading}</span></div>
+              <div style="display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; border-bottom: 1px solid rgba(20,20,28,0.1);"><span style="font-size: 14px; font-weight: 500; color: #44444F;">Run by</span><span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #14141C;">{criteria.runBy}</span></div>
+              <div style="display: flex; justify-content: space-between; gap: 16px; padding: 13px 0;"><span style="font-size: 14px; font-weight: 500; color: #44444F;">To join</span><span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #1E1BD1;">Free, by application</span></div>
+            </div>
+            <div style="margin-top: 22px; padding: 15px 18px; background: #F4F8E3; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; line-height: 1.5; color: #14141C;">{criteria.capLine}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ APPLY / FOOTER ============ -->
+    <footer id="apply" style="background: #14141C; color: #FFFFFF;">
+      <div class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 96px 44px 52px;">
+        <div data-reveal class="forge-grid-2" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: end; padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.16);">
+          <div>
+            <h2 style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(30px, 4vw, 50px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 12px; max-width: 520px;">Ready when you are.</h2>
+            <p style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: clamp(20px, 2.4vw, 27px); line-height: 1.2; color: #EBF5A6; margin: 0 0 26px; max-width: 460px;">tell us what you make and where you are headed. we read every application ourselves.</p>
+            <a href={applyHref} class="pill-lime" style="display: inline-block; text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 16px 30px; border-radius: 999px; background: #EBF5A6; color: #14141C; transition: background 0.15s;">Apply to join</a>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 15px;">
+            <div style="display: flex; justify-content: space-between; gap: 16px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 500;"><span style="color: rgba(255,255,255,0.5);">Email</span><a href={`mailto:${email}`} style="text-decoration: none; color: #EBF5A6; font-weight: 600;">{email}</a></div>
+            <div style="display: flex; justify-content: space-between; gap: 16px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 500;"><span style="color: rgba(255,255,255,0.5);">Costs</span><span>Free, by application</span></div>
+            <div style="display: flex; justify-content: space-between; gap: 16px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 500;"><span style="color: rgba(255,255,255,0.5);">Based</span><span>{site.location}</span></div>
+            <div style="display: flex; justify-content: space-between; gap: 16px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 500;"><span style="color: rgba(255,255,255,0.5);">Live from</span><span>{site.launchDate}</span></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; margin-top: 34px;">
+          <a href="/" style="text-decoration: none; font-family: 'Arial Black', Helvetica, sans-serif; font-weight: 900; font-style: italic; font-size: 28px; letter-spacing: -0.05em; color: #EBF5A6;">TheForge</a>
+          <div style="display: flex; flex-wrap: wrap; gap: 18px 30px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5);">
+            <a href="/" style="text-decoration: none;">← The hall</a>
+            <span>© 2026 The Forge · Bloomco</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</Base>

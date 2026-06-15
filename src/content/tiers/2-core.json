@@ -1,0 +1,15 @@
+{
+  "name": "Core",
+  "price": "£20k",
+  "priceNote": "per year · £24k from November",
+  "features": [
+    "100 warm introductions",
+    "Your category",
+    "The full programme",
+    "Quarterly calls to keep matching sharp",
+    "A spotlight in the insight reports"
+  ],
+  "highlight": true,
+  "badge": "Founder rate",
+  "order": 2
+}

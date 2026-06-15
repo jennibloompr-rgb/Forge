@@ -1,0 +1,14 @@
+{
+  "name": "Anchor",
+  "price": "£35k",
+  "priceNote": "per year",
+  "features": [
+    "150 warm introductions",
+    "Your category, exclusively",
+    "Monthly direction with the team",
+    "A co marketing kit for joint work",
+    "A quarterly briefing with Jeni"
+  ],
+  "highlight": false,
+  "order": 3
+}

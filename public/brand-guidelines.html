@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Forge · Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* CORE PALETTE */
+  --indigo: #1E1BD1;
+  --indigo-deep: #1814A8;
+  --indigo-soft: rgba(30, 27, 209, 0.08);
+  --lime: #EBF5A6;
+  --lime-deep: #D9E985;
+  --cream: #FAF7EE;
+  --cream-warm: #F4F0E1;
+  --cream-deeper: #ECE6D2;
+  --ink: #0A0A1A;
+  --ink-soft: #4A4A5A;
+  --ink-faint: #8A8A9A;
+  --line: rgba(10, 10, 26, 0.1);
+  --line-soft: rgba(10, 10, 26, 0.05);
+
+  /* SUPPORT ACCENTS · for very specific signalling */
+  --good: #1F7A3D;
+  --warn: #B8851F;
+  --bad: #B8331F;
+
+  /* TYPE SCALE */
+  --display-xl: clamp(64px, 12vw, 180px);
+  --display-l: clamp(48px, 8vw, 96px);
+  --display-m: clamp(36px, 5vw, 64px);
+  --display-s: clamp(28px, 4vw, 44px);
+  --body-l: 18px;
+  --body: 15px;
+  --body-s: 13px;
+  --label: 10px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { font-family: 'Geist', -apple-system, sans-serif; background: var(--cream); color: var(--ink); font-size: var(--body); line-height: 1.55; letter-spacing: -0.005em; position: relative; overflow-x: hidden; }
+
+/* PAPER GRAIN OVERLAY · system signature */
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.42; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.04 0 0 0 0 0.04 0 0 0 0 0.1 0 0 0 0.06 0'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");
+}
+
+.layer { position: relative; z-index: 2; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 56px; }
+
+/* META BAR · top */
+.meta-bar { padding: 24px 56px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: var(--label); text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-soft); }
+.meta-bar .mb-r { display: flex; gap: 28px; }
+
+/* OPENER */
+.opener { padding: 120px 56px 96px; position: relative; }
+.opener-tag { font-family: 'JetBrains Mono', monospace; font-size: var(--label); text-transform: uppercase; letter-spacing: 0.22em; color: var(--ink-faint); margin-bottom: 48px; }
+.opener-tag::before { content: '— '; }
+.opener-tag::after { content: ' —'; }
+.wordmark-hero { font-family: 'Instrument Serif', serif; font-size: var(--display-xl); line-height: 0.86; letter-spacing: -0.04em; color: var(--ink); }
+.wordmark-hero em { font-style: italic; color: var(--indigo); }
+.opener-strap { font-family: 'Instrument Serif', serif; font-size: var(--display-s); line-height: 1.18; letter-spacing: -0.02em; max-width: 760px; margin-top: 48px; color: var(--ink-soft); }
+.opener-strap em { font-style: italic; color: var(--ink); }
+.opener-foot { display: flex; justify-content: space-between; align-items: end; margin-top: 96px; padding-top: 28px; border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: var(--label); text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink-soft); }
+
+/* SECTION */
+.sect { padding: 96px 56px; border-top: 1px solid var(--line); position: relative; }
+.sect-num { position: absolute; top: 28px; right: 56px; font-family: 'JetBrains Mono', monospace; font-size: var(--label); letter-spacing: 0.16em; color: var(--ink-faint); }
+.sect-tag { font-family: 'JetBrains Mono', monospace; font-size: var(--label); text-transform: uppercase; letter-spacing: 0.22em; color: var(--ink-faint); margin-bottom: 28px; }
+.sect-tag::before { content: '— '; }
+.sect-title { font-family: 'Instrument Serif', serif; font-size: var(--display-l); line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 32px; }
+.sect-title em { font-style: italic; color: var(--indigo); }
+.sect-lede { font-family: 'Instrument Serif', serif; font-size: var(--display-s); line-height: 1.2; letter-spacing: -0.02em; max-width: 760px; color: var(--ink-soft); margin-bottom: 56px; }
+.sect-lede em { font-style: italic; color: var(--ink); }
+
+/* GRID UTILITIES */
+.cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.cols-asym { display: grid; grid-template-columns: 2fr 1fr; gap: 64px; }
+
+/* MANIFESTO */
+.manifesto-body { max-width: 820px; }
+.manifesto-body p { font-size: var(--body-l); line-height: 1.7; margin-bottom: 20px; color: var(--ink); }
+.manifesto-body p em { font-style: italic; color: var(--indigo); font-weight: 400; }
+.manifesto-body p strong { font-weight: 500; color: var(--ink); }
+
+/* PRINCIPLES GRID */
+.principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px 64px; margin-top: 40px; }
+.principle { padding-left: 32px; border-left: 1px solid var(--ink); position: relative; }
+.principle-num { font-family: 'JetBrains Mono', monospace; font-size: var(--label); letter-spacing: 0.16em; color: var(--ink-faint); margin-bottom: 14px; }
+.principle-title { font-family: 'Instrument Serif', serif; font-size: 26px; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 12px; }
+.principle-title em { font-style: italic; color: var(--indigo); }
+.principle-body { font-size: var(--body); line-height: 1.6; color: var(--ink-soft); }
+.principle-body em { font-style: italic; color: var(--ink); }
+
+/* WORDMARK SECTION */
+.wm-showcase { background: var(--ink); color: var(--cream); padding: 96px 64px; border-radius: 14px; margin-bottom: 48px; text-align: center; position: relative; overflow: hidden; }
+.wm-showcase::before { content: ''; position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: var(--lime); opacity: 0.06; border-radius: 50%; }
+.wm-showcase .wm-display { font-family: 'Instrument Serif', serif; font-size: clamp(72px, 11vw, 156px); line-height: 1; letter-spacing: -0.035em; position: relative; }
+.wm-showcase .wm-display em { font-style: italic; color: var(--lime); }
+.wm-showcase .wm-label { font-family: 'JetBrains Mono', monospace; font-size: var(--label); letter-spacing: 0.22em; text-transform: uppercase; color: rgba(250, 247, 238, 0.55); margin-top: 32px; position: relative; }
+
+.wm-variations { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.wm-var { background: var(--cream); padding: 56px 32px; text-align: center; }
+.wm-var.on-lime { background: var(--lime); }
+.wm-var.on-ink { background: var(--ink); color: var(--cream); }
+.wm-var-mark { font-family: 'Instrument Serif', serif; font-size: 48px; line-height: 1; letter-spacing: -0.03em; }
+.wm-var-mark em { font-style: italic; color: var(--indigo); }
+.wm-var.on-ink .wm-var-mark em { color: var(--lime); }
+.wm-var-label { font-family: 'JetBrains Mono', monospace; font-size: var(--label); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-top: 18px; }
+.wm-var.on-ink .wm-var-label { color: rgba(250, 247, 238, 0.55); }
+
+.wm-rules { margin-top: 48px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+.wm-rule { padding: 24px 28px; border: 1px solid var(--line); border-radius: 8px; background: var(--cream); }
+.wm-rule h4 { font-family: 'JetBrains Mono', monospace; font-size: var(--label); letter-spacing: 0.16em; text-transform: uppercase; color: var(--indigo); margin-bottom: 10px; }
+.wm-rule p { font-size: var(--body); line-height: 1.55; color: var(--ink-soft); }
+.wm-rule p em { font-style: italic; color: var(--ink); }
+
+/* COLOUR */
+.palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 56px; }
+.swatch { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+.swatch-block { aspect-ratio: 4/5; padding: 24px; display: flex; flex-direction: column; justify-content: end; position: relative; }
+.swatch-name { font-family: 'Instrument Serif', serif; font-size: 38px; line-height: 1; letter-spacing: -0.02em; }
+.swatch-name em { font-style: italic; }
+.swatch-data { padding: 18px 24px; background: var(--cream); border-top: 1px solid var(--line); }
+.swatch-hex { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink); }
+.swatch-rgb { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-faint); margin-top: 4px; }
+.swatch-tag { font-family: 'JetBrains Mono', monospace; font-size: var(--label); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 10px; }
+
+.sw-ink { background: var(--ink); color: var(--cream); }
+.sw-ink .swatch-tag { color: var(--lime); }
+.sw-indigo { background: var(--indigo); color: var(--cream); }
+.sw-indigo .swatch-tag { color: var(--lime); }
+.sw-lime { background: var(--lime); color: var(--ink); }
+.sw-lime .swatch-tag { color: var(--ink-soft); }
+.sw-cream { background: var(--cream); color: var(--ink); border: 1px solid var(--line); }
+.sw-cream .swatch-tag { color: var(--ink-soft); }
+
+.colour-rules { background: var(--cream-warm); border-radius: 12px; padding: 40px 44px; }
+.colour-rules h3 { font-family: 'Instrument Serif', serif; font-size: 28px; letter-spacing: -0.02em; margin-bottom: 24px; }
+.colour-rules h3 em { font-style: italic; color: var(--indigo); }
+.cr-list { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 40px; }
+.cr-list .cr-li { padding-left: 18px; position: relative; font-size: var(--body); line-height: 1.55; color: var(--ink-soft); }
+.cr-list .cr-li::before { content: '·'; position: absolute; left: 0; color: var(--indigo); font-weight: 700; }
+.cr-list .cr-li em { font-style: italic; color: var(--ink); }
+.cr-list .cr-li strong { font-weight: 500; color: var(--ink); }
+
+/* TYPOGRAPHY */
+.type-stack { display: flex; flex-direction: column; gap: 64px; }
+.type-row { display: grid; grid-template-columns: 200px 1fr; gap: 40px; padding-bottom: 56px; border-bottom: 1px solid var(--line); align-items: start; }
+.type-row:last-child { border-bottom: none; padding-bottom: 0; }
+.type-meta { padding-top: 18px; }
+.type-role { font-family: 'JetBrains Mono', monospace; font-size: var(--label); letter-spacing: 0.18em; text-transform: uppercase; color: var(--indigo); margin-bottom: 10px; }
+.type-name { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.type-use { font-size: 12px; color: var(--ink-soft); line-height: 1.5; }
+.type-spec { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-faint); margin-top: 14px; letter-spacing: 0.04em; }
+
+.spec-display { font-family: 'Instrument Serif', serif; font-size: clamp(48px, 7vw, 88px); line-height: 0.96; letter-spacing: -0.03em; color: var(--ink); }
+.spec-display em { font-style: italic; color: var(--indigo); }
+.spec-display-sub { font-family: 'Instrument Serif', serif; font-size: 24px; line-height: 1.3; color: var(--ink-soft); margin-top: 18px; font-style: italic; }
+
+.spec-body { font-family: 'Geist', sans-serif; font-size: var(--body-l); line-height: 1.6; color: var(--ink); max-width: 640px; }
+.spec-body em { font-style: italic; color: var(--indigo); }
+.spec-body-weights { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint); margin-top: 18px; letter-spacing: 0.04em; }
+
+.spec-mono { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--ink); letter-spacing: 0.04em; }
+.spec-mono .lbl { display: block; font-size: var(--label); text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-faint); margin-bottom: 8px; }
+
+.scale-row { display: grid; grid-template-columns: 80px 1fr 80px; gap: 20px; padding: 14px 0; border-top: 1px dashed var(--line); align-items: baseline; }
+.scale-row:first-child { border-top: none; }
+.scale-token { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--ink-faint); }
+.scale-spec { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-faint); text-align: right; letter-spacing: 0.04em; }
+.scale-sample { color: var(--ink); }
+
+/* VOICE */
+.voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 16px; }
+.voice-card { background: var(--cream); border: 1px solid var(--line); border-radius: 10px; padding: 28px 32px; }
+.voice-card.good { border-left: 4px solid var(--good); }
+.voice-card.bad { border-left: 4px solid var(--bad); }
+.voice-card-label { font-family: 'JetBrains Mono', monospace; font-size: var(--label); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 14px; font-weight: 600; }
+.voice-card.good .voice-card-label { color: var(--good); }
+.voice-card.bad .voice-card-label { color: var(--bad); }
+.voice-card.bad .voice-card-quote { text-decoration: line-through; text-decoration-color: rgba(184, 51, 31, 0.4); }
+.voice-card-quote { font-family: 'Instrument Serif', serif; font-size: 22px; line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 12px; }
+.voice-card-quote em { font-style: italic; color: var(--indigo); }
+.voice-card-why { font-size: 12px; line-height: 1.55; color: var(--ink-soft); padding-top: 12px; border-top: 1px solid var(--line); }
+.voice-card-why em { font-style: italic; color: var(--ink); }
+
+.voice-principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-bottom: 48px; }
+.vp { background: var(--cream); padding: 32px 28px; }
+.vp-tag { font-family: 'JetBrains Mono', monospace; font-size: var(--label); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 12px; }
+.vp-title { font-family: 'Instrument Serif', serif; font-size: 26px; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 10px; }
+.vp-title em { font-style: italic; color: var(--indigo); }
+.vp-body { font-size: 12px; line-height: 1.55; color: var(--ink-soft); }
+.vp-body em { font-style: italic; color: var(--ink); }
+
+/* COMPONENTS */
+.comp-section { background: var(--cream-warm); border-radius: 12px; padding: 48px 48px; margin-bottom: 32px; }
+.comp-section h3 { font-family: 'Instrument Serif', serif; font-size: 28px; letter-spacing: -0.02em; margin-bottom: 8px; }
+.comp-section h3 em { font-style: italic; color: var(--indigo); }
+.comp-section .comp-desc { font-size: 13px; color: var(--ink-soft); margin-bottom: 32px; max-width: 600px; line-height: 1.55; }
+.comp-section .comp-desc em { font-style: italic; color: var(--ink); }
+
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+.btn { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; padding: 12px 22px; border-radius: 6px; cursor: pointer; transition: all 0.15s; border: none; display: inline-flex; align-items: center; gap: 8px; }
+.btn-primary { background: var(--ink); color: var(--lime); }
+.btn-primary:hover { background: var(--indigo); }
+.btn-secondary { background: var(--lime); color: var(--ink); }
+.btn-secondary:hover { background: var(--lime-deep); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.btn-ghost:hover { background: var(--ink); color: var(--lime); }
+.btn-quiet { background: transparent; color: var(--ink-soft); font-weight: 400; padding: 12px 0; }
+.btn-quiet::after { content: ' →'; }
+
+.pill-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+.pill { font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 6px 12px; background: var(--cream-deeper); color: var(--ink); border-radius: 4px; letter-spacing: 0.04em; }
+.pill.indigo { background: var(--indigo-soft); color: var(--indigo); }
+.pill.lime { background: var(--lime); color: var(--ink); font-weight: 600; }
+.pill.ink { background: var(--ink); color: var(--lime); font-weight: 600; }
+
+.label-row { display: flex; gap: 18px; flex-wrap: wrap; align-items: baseline; margin-bottom: 14px; }
+.lbl-sample { font-family: 'JetBrains Mono', monospace; font-size: var(--label); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); }
+.lbl-sample.indigo { color: var(--indigo); }
+.lbl-sample.dash::before { content: '— '; }
+
+.comp-spec { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.04em; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
+
+/* APPLICATION */
+.app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.app-card { background: var(--cream); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.app-canvas { padding: 56px 48px; }
+.app-canvas.dark { background: var(--ink); color: var(--cream); }
+.app-canvas.lime { background: var(--lime); color: var(--ink); }
+.app-canvas.cream { background: var(--cream); color: var(--ink); }
+.app-foot { padding: 18px 24px; background: var(--cream); border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: var(--label); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
+
+/* TAGLINE PATTERN */
+.tagline-stack { font-family: 'Instrument Serif', serif; line-height: 1.05; letter-spacing: -0.02em; }
+.tagline-stack .tl-1 { font-size: 42px; }
+.tagline-stack .tl-2 { font-size: 42px; font-style: italic; }
+.tagline-stack em { font-style: italic; color: var(--indigo); }
+.dark .tagline-stack em { color: var(--lime); }
+.lime .tagline-stack em { color: var(--indigo); }
+
+/* DON'TS */
+.donts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.dont-card { background: var(--cream); border: 1px solid var(--line); border-left: 4px solid var(--bad); border-radius: 8px; padding: 24px 28px; }
+.dont-card h4 { font-family: 'Instrument Serif', serif; font-size: 22px; letter-spacing: -0.01em; margin-bottom: 8px; }
+.dont-card h4 em { font-style: italic; color: var(--bad); }
+.dont-card p { font-size: 13px; line-height: 1.55; color: var(--ink-soft); }
+.dont-card p em { font-style: italic; color: var(--ink); }
+
+/* FOOTER */
+.foot-final { padding: 96px 56px 64px; border-top: 1px solid var(--line); }
+.foot-mark { font-family: 'Instrument Serif', serif; font-size: clamp(64px, 10vw, 144px); line-height: 0.9; letter-spacing: -0.04em; }
+.foot-mark em { font-style: italic; color: var(--indigo); }
+.foot-meta { display: flex; justify-content: space-between; align-items: end; margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: var(--label); text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-soft); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .meta-bar { padding: 16px 22px; flex-direction: column; gap: 10px; align-items: start; }
+  .meta-bar .mb-r { gap: 16px; flex-wrap: wrap; }
+  .opener { padding: 56px 22px 56px; }
+  .opener-foot { margin-top: 48px; flex-direction: column; gap: 12px; align-items: start; }
+  .sect { padding: 56px 22px; }
+  .sect-num { right: 22px; }
+  .wrap { padding: 0 22px; }
+  .cols-2, .cols-asym, .cols-3 { grid-template-columns: 1fr; gap: 28px; }
+  .principles { grid-template-columns: 1fr; gap: 32px; }
+  .palette { grid-template-columns: 1fr 1fr; }
+  .wm-variations { grid-template-columns: 1fr; }
+  .wm-rules { grid-template-columns: 1fr; }
+  .cr-list { grid-template-columns: 1fr; }
+  .voice-grid { grid-template-columns: 1fr; }
+  .voice-principles { grid-template-columns: 1fr; }
+  .type-row { grid-template-columns: 1fr; gap: 24px; }
+  .app-grid { grid-template-columns: 1fr; }
+  .donts-grid { grid-template-columns: 1fr; }
+  .comp-section { padding: 32px 24px; }
+  .colour-rules { padding: 28px 24px; }
+  .foot-final { padding: 56px 22px 48px; }
+  .foot-meta { flex-direction: column; gap: 12px; align-items: start; }
+}
+</style>
+</head>
+<body>
+<div class="layer">
+
+<!-- META BAR -->
+<div class="meta-bar">
+  <div>The Forge · Brand Guidelines</div>
+  <div class="mb-r">
+    <span>Issue One</span>
+    <span>May 2026</span>
+    <span>Norwich</span>
+  </div>
+</div>
+
+<!-- OPENER -->
+<section class="opener">
+  <div class="opener-tag">A brand book, not a brand prison</div>
+  <h1 class="wordmark-hero"><em>The</em>Forge</h1>
+  <p class="opener-strap">A curated network for the UK's most considered food and drink brands. <em>Free for brands, paid by partners, year round, by named human.</em> This document sets out the visual and verbal language that makes The Forge feel like itself.</p>
+  <div class="opener-foot">
+    <span>Bloomco · Norfolk, England</span>
+    <span>Status · Live</span>
+    <span>For internal &amp; partner use</span>
+  </div>
+</section>
+
+<!-- 01 · THE BRAND -->
+<section class="sect">
+  <div class="sect-num">Section 01</div>
+  <div class="sect-tag">The brand</div>
+  <h2 class="sect-title">What <em>The Forge</em> is.</h2>
+  <p class="sect-lede">It's a club, structured as a service. It's a service, run like a club. <em>The tension between those two things is the whole point.</em></p>
+
+  <div class="manifesto-body">
+    <p>The Forge exists because the best UK challenger brands deserve <em>better than spam and pray supplier outreach</em>. They deserve a named human who knows their stage, their needs, their constraints, and curates every introduction to fit. Year round, not at one annual festival.</p>
+    <p>We sit between two audiences. <strong>Brands</strong> join free because they are the network's reason to exist. <strong>Partners</strong> pay because they want the brands · co packers, distributors, packaging, ingredients, agencies, capital. Service partners who'd otherwise spend six figures on trade shows and cold outreach to reach a fraction of who we already curate.</p>
+    <p>We are <em>proudly Norfolk, proudly national, proudly opinionated about what good looks like</em>. We are not London by default and not American by aspiration. We're built where we are because that's where the best work happens when the founder is also the proprietor.</p>
+    <p>We hold scarcity as a quality, not a tactic. Five hundred brands, capped. Twenty founding partners. One welcome book per member, hand delivered. No mass mailing, no programmatic email, no growth hack. Every interaction <em>considered</em>.</p>
+  </div>
+
+  <div class="principles">
+    <div class="principle">
+      <div class="principle-num">— Principle 01</div>
+      <h3 class="principle-title">Curate, <em>don't aggregate</em>.</h3>
+      <p class="principle-body">A network of 500 deeply known brands beats a database of 50,000 anonymous ones. Every member has a name, a stage, a story. Every intro is matched by a human who reads both sides.</p>
+    </div>
+    <div class="principle">
+      <div class="principle-num">— Principle 02</div>
+      <h3 class="principle-title">Editorial, <em>not transactional</em>.</h3>
+      <p class="principle-body">We design like a magazine, not a marketplace. Considered typography, generous white space, italic emphasis, paper grain. We're a working tool that reads like a periodical.</p>
+    </div>
+    <div class="principle">
+      <div class="principle-num">— Principle 03</div>
+      <h3 class="principle-title">Year round, <em>not annual</em>.</h3>
+      <p class="principle-body">Trade shows are once a year and exhausting. Festivals are once a year and brief. The Forge is the week-by-week relationship that makes those moments better, not the moments themselves.</p>
+    </div>
+    <div class="principle">
+      <div class="principle-num">— Principle 04</div>
+      <h3 class="principle-title">Norfolk first, <em>national second</em>.</h3>
+      <p class="principle-body">We're based where the founder is based. The best brands aren't all in London. We make the regional anchor a feature, not an apology. Our members come to Norfolk for the founders dinner, and they remember.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · WORDMARK -->
+<section class="sect">
+  <div class="sect-num">Section 02</div>
+  <div class="sect-tag">Wordmark</div>
+  <h2 class="sect-title">The <em>italic The</em>.</h2>
+  <p class="sect-lede">Two characters do most of the work. The italicised <em>The</em> establishes that this brand has a point of view before you've read the rest.</p>
+
+  <div class="wm-showcase">
+    <div class="wm-display"><em>The</em>Forge</div>
+    <div class="wm-label">Primary wordmark · Instrument Serif · italic + regular</div>
+  </div>
+
+  <div class="wm-variations">
+    <div class="wm-var">
+      <div class="wm-var-mark"><em>The</em>Forge</div>
+      <div class="wm-var-label">On cream · default</div>
+    </div>
+    <div class="wm-var on-lime">
+      <div class="wm-var-mark"><em>The</em>Forge</div>
+      <div class="wm-var-label">On lime · accent moments</div>
+    </div>
+    <div class="wm-var on-ink">
+      <div class="wm-var-mark"><em>The</em>Forge</div>
+      <div class="wm-var-label">On ink · evening, formal</div>
+    </div>
+  </div>
+
+  <div class="wm-rules">
+    <div class="wm-rule">
+      <h4>— Anatomy</h4>
+      <p>Instrument Serif. <em>The</em> in italic, indigo (or lime on ink). <em>Forge</em> in regular, ink. No space between. Letter spacing tight at -0.035em. Treat as a single typographic object.</p>
+    </div>
+    <div class="wm-rule">
+      <h4>— Minimum size</h4>
+      <p>32px on screen, 14mm in print. Below that, the italic relationship gets lost and the wordmark stops doing its job. Don't shrink it · use the monogram (TF) instead.</p>
+    </div>
+    <div class="wm-rule">
+      <h4>— Clear space</h4>
+      <p>Equal to the cap height of <em>F</em> on all four sides. Generous, never tight. The wordmark needs room to breathe · particularly when paired with a partner logo or directory listing.</p>
+    </div>
+    <div class="wm-rule">
+      <h4>— What not to do</h4>
+      <p>Don't bold <em>The</em>. Don't separate <em>The</em> and <em>Forge</em> with a space. Don't recreate in any font that isn't Instrument Serif. Don't outline. Don't add a tagline directly underneath in the wordmark itself.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · COLOUR -->
+<section class="sect">
+  <div class="sect-num">Section 03</div>
+  <div class="sect-tag">Colour</div>
+  <h2 class="sect-title">Four <em>colours</em>, one tension.</h2>
+  <p class="sect-lede">Indigo and lime aren't editorial conventions. <em>That's the point.</em> They put The Forge in its own visual lane · neither earthy publishing nor sterile tech.</p>
+
+  <div class="palette">
+    <div class="swatch">
+      <div class="swatch-block sw-ink">
+        <div class="swatch-tag">Primary</div>
+        <div class="swatch-name"><em>Ink</em></div>
+      </div>
+      <div class="swatch-data">
+        <div class="swatch-hex">#0A0A1A</div>
+        <div class="swatch-rgb">RGB 10 / 10 / 26</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block sw-indigo">
+        <div class="swatch-tag">Action</div>
+        <div class="swatch-name"><em>Indigo</em></div>
+      </div>
+      <div class="swatch-data">
+        <div class="swatch-hex">#1E1BD1</div>
+        <div class="swatch-rgb">RGB 30 / 27 / 209</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block sw-lime">
+        <div class="swatch-tag">Accent</div>
+        <div class="swatch-name"><em>Lime</em></div>
+      </div>
+      <div class="swatch-data">
+        <div class="swatch-hex">#EBF5A6</div>
+        <div class="swatch-rgb">RGB 235 / 245 / 166</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block sw-cream">
+        <div class="swatch-tag">Ground</div>
+        <div class="swatch-name"><em>Cream</em></div>
+      </div>
+      <div class="swatch-data">
+        <div class="swatch-hex">#FAF7EE</div>
+        <div class="swatch-rgb">RGB 250 / 247 / 238</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="colour-rules">
+    <h3>How <em>colour</em> works.</h3>
+    <div class="cr-list">
+      <div class="cr-li"><strong>Cream is the page.</strong> Always the default background. Never use pure white. Cream carries the paper grain.</div>
+      <div class="cr-li"><strong>Ink is gravity.</strong> Body text, primary buttons, evening / formal moments. Replaces black entirely · purer than #000.</div>
+      <div class="cr-li"><strong>Indigo is action.</strong> Hyperlinks, italic emphasis in copy, primary CTAs on cream, status indicators. Used sparingly.</div>
+      <div class="cr-li"><strong>Lime is the moment.</strong> Featured states, founding partner pricing, key callouts, on dark surfaces. Lime sings only if used <em>rarely</em>.</div>
+      <div class="cr-li"><strong>Cream warm and deeper</strong> are derived from cream for subsection surfaces and card grounds. Never invent new neutrals.</div>
+      <div class="cr-li"><strong>Status colours</strong> (green, amber, red) exist for system states only. Never used as brand expression.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · TYPOGRAPHY -->
+<section class="sect">
+  <div class="sect-num">Section 04</div>
+  <div class="sect-tag">Typography</div>
+  <h2 class="sect-title">Three <em>typefaces</em>, three jobs.</h2>
+  <p class="sect-lede">Display carries the voice. Body carries the argument. Mono carries the data. <em>Never let them blur into each other's territory.</em></p>
+
+  <div class="type-stack">
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-role">— Display</div>
+        <div class="type-name">Instrument Serif</div>
+        <div class="type-use">Headlines, hero moments, names, big numbers. Italic carries emphasis. Regular carries structure.</div>
+        <div class="type-spec">Google Fonts · Free · italic + regular</div>
+      </div>
+      <div>
+        <div class="spec-display"><em>The</em> best brands deserve better.</div>
+        <div class="spec-display-sub">Italic Instrument Serif is the brand's voice on the page.</div>
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-role">— Body</div>
+        <div class="type-name">Geist</div>
+        <div class="type-use">All running prose, interface, navigation, descriptive copy. Modern, considered, neutral enough to let Instrument carry character.</div>
+        <div class="type-spec">Google Fonts · Free · 300, 400, 500, 600, 700</div>
+      </div>
+      <div>
+        <p class="spec-body">A curated network for the UK's most considered food and drink brands. Free for brands. Paid by partners. <em>Year round, by named human.</em> Membership is by application. Most accepted brands sit between £250k and £1m in annual revenue.</p>
+        <div class="spec-body-weights">Light 300 · Regular 400 · Medium 500 · Semibold 600 · Bold 700</div>
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-role">— Utility</div>
+        <div class="type-name">JetBrains Mono</div>
+        <div class="type-use">Labels, data, eyebrows, tags, sectional numbering. Adds precision and "working tool" texture.</div>
+        <div class="type-spec">Google Fonts · Free · 400, 500, 600</div>
+      </div>
+      <div>
+        <div class="spec-mono">
+          <span class="lbl">— Section eyebrow</span>
+          MEMBERS · NORFOLK · MAY 2026<br><br>
+          <span class="lbl">— Data values</span>
+          £35,000/yr · 150 intros · 78% acceptance<br><br>
+          <span class="lbl">— Tag pill</span>
+          ANCHOR PARTNER · CO PACK
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family: 'Instrument Serif', serif; font-size: 28px; letter-spacing: -0.02em; margin-top: 80px; margin-bottom: 20px;">Type scale.</h3>
+  <div>
+    <div class="scale-row">
+      <span class="scale-token">display xl</span>
+      <span class="scale-sample" style="font-family: 'Instrument Serif', serif; font-size: 96px; line-height: 0.9; letter-spacing: -0.04em;"><em>Hero</em></span>
+      <span class="scale-spec">96 / 0.9 / -0.04em</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-token">display l</span>
+      <span class="scale-sample" style="font-family: 'Instrument Serif', serif; font-size: 64px; line-height: 0.95; letter-spacing: -0.03em;"><em>Section</em></span>
+      <span class="scale-spec">64 / 0.95 / -0.03em</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-token">display m</span>
+      <span class="scale-sample" style="font-family: 'Instrument Serif', serif; font-size: 44px; line-height: 1; letter-spacing: -0.02em;"><em>Subsection</em></span>
+      <span class="scale-spec">44 / 1 / -0.02em</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-token">display s</span>
+      <span class="scale-sample" style="font-family: 'Instrument Serif', serif; font-size: 28px; line-height: 1.1; letter-spacing: -0.02em;"><em>Card title</em></span>
+      <span class="scale-spec">28 / 1.1 / -0.02em</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-token">body l</span>
+      <span class="scale-sample" style="font-family: 'Geist', sans-serif; font-size: 18px; line-height: 1.6;">Reading paragraph for long form prose.</span>
+      <span class="scale-spec">18 / 1.6</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-token">body</span>
+      <span class="scale-sample" style="font-family: 'Geist', sans-serif; font-size: 15px; line-height: 1.55;">Default interface and UI copy.</span>
+      <span class="scale-spec">15 / 1.55</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-token">body s</span>
+      <span class="scale-sample" style="font-family: 'Geist', sans-serif; font-size: 13px; line-height: 1.55;">Card details, captions, helper text.</span>
+      <span class="scale-spec">13 / 1.55</span>
+    </div>
+    <div class="scale-row">
+      <span class="scale-token">label</span>
+      <span class="scale-sample" style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;">SECTION TAG · DATA LABEL · EYEBROW</span>
+      <span class="scale-spec">10 / 0.18em / upper</span>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · VOICE -->
+<section class="sect">
+  <div class="sect-num">Section 05</div>
+  <div class="sect-tag">Voice &amp; tone</div>
+  <h2 class="sect-title">How <em>we sound</em>.</h2>
+  <p class="sect-lede">Considered, decisive, lightly opinionated, never effusive. <em>Norfolk understatement.</em> The brand voice should read like a smart friend with strong taste, not a marketer pitching you.</p>
+
+  <div class="voice-principles">
+    <div class="vp">
+      <div class="vp-tag">— Always</div>
+      <h4 class="vp-title">British <em>English</em></h4>
+      <p class="vp-body">Curated, not curated. Recognise, not recognize. Specialise, not specialize. <em>Even in US-facing copy.</em> The British register is part of the brand.</p>
+    </div>
+    <div class="vp">
+      <div class="vp-tag">— Never</div>
+      <h4 class="vp-title">Use <em>hyphens</em></h4>
+      <p class="vp-body">No em dashes, no en dashes, no regular hyphens. Use commas, full stops, or just two words. <em>Hyphens are an AI tell.</em></p>
+    </div>
+    <div class="vp">
+      <div class="vp-tag">— Always</div>
+      <h4 class="vp-title">Italic for <em>emphasis</em></h4>
+      <p class="vp-body">Not bold. Not all caps. Not exclamation. <em>Italic</em>. It's the typographic equivalent of slowing down for a beat.</p>
+    </div>
+    <div class="vp">
+      <div class="vp-tag">— Always</div>
+      <h4 class="vp-title">Plain <em>verbs</em></h4>
+      <p class="vp-body">Save, send, post, open. Not "submit", not "engage with", not "leverage". <em>What does the button do.</em></p>
+    </div>
+    <div class="vp">
+      <div class="vp-tag">— Never</div>
+      <h4 class="vp-title">Marketing <em>filler</em></h4>
+      <p class="vp-body">No "unlock", "elevate", "supercharge", "revolutionise", "game changer", "best in class", "next level". <em>Show, don't sell.</em></p>
+    </div>
+    <div class="vp">
+      <div class="vp-tag">— Always</div>
+      <h4 class="vp-title">Be <em>specific</em></h4>
+      <p class="vp-body">"142 brands across Norfolk" beats "many brands across the region". <em>Numbers, names, dates.</em> Specificity is credibility.</p>
+    </div>
+  </div>
+
+  <div class="voice-grid">
+    <div class="voice-card good">
+      <div class="voice-card-label">— Good</div>
+      <p class="voice-card-quote">"Free for brands. Paid by partners. <em>Curated by a named human.</em>"</p>
+      <p class="voice-card-why">Direct, specific, sets up the difference in three sentences. Italic carries the emphasis without raising the volume.</p>
+    </div>
+    <div class="voice-card bad">
+      <div class="voice-card-label">— Bad</div>
+      <p class="voice-card-quote">"Unlock unprecedented growth with our cutting-edge platform that revolutionises how brands and partners connect!"</p>
+      <p class="voice-card-why">Generic SaaS adjectives. Exclamation mark. Hyphenated "cutting-edge". <em>Reads like every other tech pitch.</em></p>
+    </div>
+    <div class="voice-card good">
+      <div class="voice-card-label">— Good</div>
+      <p class="voice-card-quote">"You're 60% through onboarding. <em>Two stages left.</em>"</p>
+      <p class="voice-card-why">States the fact, names the next step. No drama, no hand holding. Trusts the reader.</p>
+    </div>
+    <div class="voice-card bad">
+      <div class="voice-card-label">— Bad</div>
+      <p class="voice-card-quote">"You're making amazing progress! Keep up the great work · just a couple more steps to go on your exciting journey with us!"</p>
+      <p class="voice-card-why">Patronising. Effusive. "Exciting journey" is a corporate cliché. <em>The reader knows where they are; don't perform it for them.</em></p>
+    </div>
+    <div class="voice-card good">
+      <div class="voice-card-label">— Good</div>
+      <p class="voice-card-quote">"Daniel sent an intro to <em>Cotswold Fayre</em>. Reply by Friday."</p>
+      <p class="voice-card-why">Names the action, names the deadline, names the partner. The whole notification fits in a glance.</p>
+    </div>
+    <div class="voice-card bad">
+      <div class="voice-card-label">— Bad</div>
+      <p class="voice-card-quote">"A new opportunity has been generated for your consideration via our matchmaking engine."</p>
+      <p class="voice-card-why">"Generated" is robotic. "Matchmaking engine" is tech speak. <em>What actually happened? Daniel sent an intro. Say that.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · TEXTURE -->
+<section class="sect">
+  <div class="sect-num">Section 06</div>
+  <div class="sect-tag">Texture &amp; materiality</div>
+  <h2 class="sect-title">Paper, <em>not pixels</em>.</h2>
+  <p class="sect-lede">Every Forge surface carries a subtle paper grain. It's the difference between a thing that feels like software and <em>a thing that feels like a magazine you happen to read on a screen.</em></p>
+
+  <div class="cols-asym">
+    <div>
+      <div style="background: var(--cream); border: 1px solid var(--line); border-radius: 12px; padding: 64px 48px; position: relative; overflow: hidden;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: var(--label); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px;">— Grain detail · enlarged 4x</div>
+        <div style="height: 200px; background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22180%22 viewBox=%220 0 180 180%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/><feColorMatrix values=%220 0 0 0 0.04 0 0 0 0 0.04 0 0 0 0 0.1 0 0 0 0.4 0%22/></filter><rect width=%22180%22 height=%22180%22 filter=%22url(%23n)%22/></svg>'); background-size: 720px 720px; background-position: 0 0;"></div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-family: 'Instrument Serif', serif; font-size: 36px; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 20px;">Why <em>grain</em>?</h3>
+      <p style="font-size: var(--body); line-height: 1.65; color: var(--ink-soft); margin-bottom: 20px;">Most digital products choose flat, sharp, clean. The Forge chooses to look like considered paper · because the product itself is more about relationships than transactions, more about the welcome book on your desk than the notification on your phone.</p>
+      <p style="font-size: var(--body); line-height: 1.65; color: var(--ink-soft);">The grain is subtle. <em>You shouldn't notice it consciously.</em> You should just feel that the surface has texture, in the way a beautifully printed book feels different from a photocopied document, without ever consciously thinking about it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 · COMPONENTS -->
+<section class="sect">
+  <div class="sect-num">Section 07</div>
+  <div class="sect-tag">Components</div>
+  <h2 class="sect-title">The <em>working parts</em>.</h2>
+  <p class="sect-lede">A small, disciplined component library. Each part exists because <em>something would be harder without it.</em></p>
+
+  <!-- BUTTONS -->
+  <div class="comp-section">
+    <h3>Buttons.</h3>
+    <p class="comp-desc">Four button modes. <em>Primary</em> is ink + lime, the most decisive action on any view. <em>Secondary</em> is lime + ink, for high-energy moments. <em>Ghost</em> is bordered, for second tier actions. <em>Quiet</em> is for inline link-style affordances.</p>
+    <div class="btn-row">
+      <button class="btn btn-primary">Primary action</button>
+      <button class="btn btn-secondary">Secondary action</button>
+      <button class="btn btn-ghost">Ghost action</button>
+      <button class="btn btn-quiet">Quiet action</button>
+    </div>
+    <div class="comp-spec">Sizing: 12px padding vertical, 22px horizontal · 11px JetBrains Mono · 0.12em letter spacing · uppercase · 6px radius</div>
+  </div>
+
+  <!-- PILLS -->
+  <div class="comp-section">
+    <h3>Status &amp; <em>tag pills</em>.</h3>
+    <p class="comp-desc">Pills carry classification. Neutral pills use cream-deeper for inert tags. Indigo pills for system states. Lime pills for premium / founder / featured. Ink pills for the highest emphasis.</p>
+    <div class="pill-row">
+      <span class="pill">Neutral · classification</span>
+      <span class="pill indigo">Indigo · system status</span>
+      <span class="pill lime">Lime · featured</span>
+      <span class="pill ink">Ink · primary emphasis</span>
+    </div>
+    <div class="comp-spec">Sizing: 6px / 12px padding · 11px JetBrains Mono · 4px radius · sentence case allowed</div>
+  </div>
+
+  <!-- LABELS / EYEBROWS -->
+  <div class="comp-section">
+    <h3>Eyebrows &amp; <em>labels</em>.</h3>
+    <p class="comp-desc">Eyebrows mark the start of a section or category. Always JetBrains Mono, 10px, 0.18em letter spacing, uppercase. <em>The leading dash is mandatory</em> · it's part of the brand's wayfinding language.</p>
+    <div class="label-row">
+      <span class="lbl-sample dash">Section eyebrow</span>
+      <span class="lbl-sample indigo dash">Indigo eyebrow</span>
+      <span class="lbl-sample dash">— On its own</span>
+    </div>
+    <div class="comp-spec">Spacing: leading dash is always followed by a space. Trailing dash only in headers, never inline.</div>
+  </div>
+
+  <!-- DIVIDERS / NUMBERED MARKERS -->
+  <div class="comp-section">
+    <h3>Section <em>numbering</em>.</h3>
+    <p class="comp-desc">Used in two places only · top right of a section (small mono "Section 03") and in stepped sequences where the order genuinely matters (onboarding stages, content modules). <em>Never decoratively.</em></p>
+    <div style="display: flex; gap: 40px; align-items: end;">
+      <div>
+        <div style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 72px; line-height: 0.85; color: var(--indigo); letter-spacing: -0.04em;">01</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-top: 8px;">— Big serif italic</div>
+      </div>
+      <div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--ink-faint);">Section 03</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-top: 8px;">— Small mono</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 · APPLICATION -->
+<section class="sect">
+  <div class="sect-num">Section 08</div>
+  <div class="sect-tag">In use</div>
+  <h2 class="sect-title">The brand <em>at work</em>.</h2>
+  <p class="sect-lede">Three example moments. Same system, three voices. <em>Same brand, dressed for different rooms.</em></p>
+
+  <div class="app-grid">
+    <div class="app-card">
+      <div class="app-canvas cream">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 32px;">— Brand member application</div>
+        <h3 class="tagline-stack"><span class="tl-1">Apply to join</span><br><span class="tl-2"><em>The</em> Forge.</span></h3>
+        <p style="font-family: 'Geist', sans-serif; font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin-top: 24px; max-width: 360px;">Free for brands. Curated by Daniel. <em>Membership is by application.</em></p>
+        <button class="btn btn-primary" style="margin-top: 28px;">Start application</button>
+      </div>
+      <div class="app-foot">Cream surface · brand voice · indigo italic</div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-canvas dark">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(250, 247, 238, 0.5); margin-bottom: 32px;">— Partner founding tier</div>
+        <h3 class="tagline-stack"><span class="tl-1">For service partners.</span><br><span class="tl-2"><em>Curated</em> access to <em>500 brands</em>.</span></h3>
+        <p style="font-family: 'Geist', sans-serif; font-size: 15px; line-height: 1.6; color: rgba(250, 247, 238, 0.7); margin-top: 24px; max-width: 360px;">Year round, named human, premium club experience. <em>Three tiers.</em></p>
+        <button class="btn btn-secondary" style="margin-top: 28px;">Become a partner</button>
+      </div>
+      <div class="app-foot">Ink surface · partner voice · lime italic</div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-canvas lime">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 32px;">— Founders dinner invitation</div>
+        <h3 class="tagline-stack"><span class="tl-1">You're <em>invited</em>.</span><br><span class="tl-2">Norfolk · 12 September.</span></h3>
+        <p style="font-family: 'Geist', sans-serif; font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin-top: 24px; max-width: 360px;">An evening for the founding 100. <em>Eight per table, off the record.</em></p>
+        <button class="btn" style="background: var(--ink); color: var(--lime); margin-top: 28px;">RSVP by 5 Sept</button>
+      </div>
+      <div class="app-foot">Lime surface · moment voice · indigo italic</div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-canvas cream">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 32px;">— Notification · partner portal</div>
+        <h3 style="font-family: 'Instrument Serif', serif; font-size: 32px; line-height: 1.15; letter-spacing: -0.02em; color: var(--ink);">Daniel sent an intro to <em>Cotswold Fayre</em>.</h3>
+        <p style="font-family: 'Geist', sans-serif; font-size: 13px; line-height: 1.55; color: var(--ink-soft); margin-top: 16px;">Hannah Frost, Buying Director. Premium snacks Q3 review.</p>
+        <div style="display: flex; gap: 8px; margin-top: 22px;">
+          <button class="btn btn-primary" style="padding: 9px 16px; font-size: 10px;">Accept</button>
+          <button class="btn btn-ghost" style="padding: 9px 16px; font-size: 10px;">Decline with note</button>
+        </div>
+      </div>
+      <div class="app-foot">Cream surface · interface voice · concise + specific</div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · DONTS -->
+<section class="sect">
+  <div class="sect-num">Section 09</div>
+  <div class="sect-tag">Don'ts</div>
+  <h2 class="sect-title">What <em>breaks the brand</em>.</h2>
+  <p class="sect-lede">Most brand books are written as "do this." This one's mostly the opposite. <em>The rules below exist because we've seen them broken.</em></p>
+
+  <div class="donts-grid">
+    <div class="dont-card">
+      <h4>Don't <em>add a tagline under the wordmark</em>.</h4>
+      <p>The wordmark stands alone. If you need to qualify it ("curated members club", etc.), do that in a separate line, in its own typesetting. <em>The italic The carries enough on its own.</em></p>
+    </div>
+    <div class="dont-card">
+      <h4>Don't <em>introduce new colours</em>.</h4>
+      <p>If a use case feels like it needs a different colour, the answer is almost always "use what you have, differently". Adding a fifth core colour breaks the tension that makes the system distinctive.</p>
+    </div>
+    <div class="dont-card">
+      <h4>Don't <em>use Instrument Serif for body</em>.</h4>
+      <p>It's a display face. It looks beautiful at 64px and weakens at 16px. Body is always Geist. Instrument Serif appears only for headlines, hero moments, names, and specific italic emphasis.</p>
+    </div>
+    <div class="dont-card">
+      <h4>Don't <em>centre align long copy</em>.</h4>
+      <p>Headlines can be centred for hero moments. Paragraphs are always left aligned. Centred body copy reads as event poster, not magazine spread. <em>We're the magazine.</em></p>
+    </div>
+    <div class="dont-card">
+      <h4>Don't <em>use stock photography</em>.</h4>
+      <p>Bowl of porridge on linen, unsmiling founder against brick wall, hands holding a coffee · these read as templated immediately. If you can't get original photography of real members, use no photography. <em>Type is photography.</em></p>
+    </div>
+    <div class="dont-card">
+      <h4>Don't <em>compress whitespace to fit more in</em>.</h4>
+      <p>The most common temptation. Generous white space is part of the premium signal. If the content doesn't fit, the content is too long. <em>Cut copy, don't crush spacing.</em></p>
+    </div>
+    <div class="dont-card">
+      <h4>Don't <em>use emojis in member-facing copy</em>.</h4>
+      <p>Emojis are conversational tone. The Forge tone is considered. The mismatch reads cheap. <em>Use icons sparingly, only when the function genuinely benefits.</em></p>
+    </div>
+    <div class="dont-card">
+      <h4>Don't <em>let the grain go away</em>.</h4>
+      <p>If a contractor renders a Forge surface without the paper grain texture, send it back. The grain is the brand's signature on every digital surface. <em>Don't ship without it.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section class="foot-final">
+  <h2 class="foot-mark"><em>The</em>Forge</h2>
+  <div class="foot-meta">
+    <span>Brand Guidelines · Issue One · May 2026</span>
+    <span>Last revision · 22 May 2026</span>
+    <span>Custodian · Jeni Bloom</span>
+  </div>
+</section>
+
+</div>
+</body>
+</html>

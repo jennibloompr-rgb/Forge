@@ -1,0 +1,109 @@
+# Decap CMS — the owner's content editor (https://decapcms.org).
+# Sign in at /admin. Changes are committed to the repo, which triggers a
+# rebuild/redeploy. No database, no server to maintain.
+#
+# SETUP (one-time, see README "CMS setup"):
+#   1. In Netlify: enable Identity, set registration to "Invite only", and
+#      enable the Git Gateway service. Invite the owner's email.
+#   2. Confirm `branch` below is the branch your site deploys from.
+# (To use GitHub login instead of Netlify Identity, swap `git-gateway` for a
+#  `github` backend with repo/branch — see the Decap docs.)
+backend:
+  name: git-gateway
+  branch: main
+
+# Lets the owner preview/edit locally with `npx decap-server` during dev.
+local_backend: true
+
+media_folder: public/assets/uploads
+public_folder: /assets/uploads
+
+site_url: https://weforgepartnerships.com
+display_url: https://weforgepartnerships.com
+logo_url: /favicon.svg
+
+collections:
+  # ---- Members (Brands carousel) -------------------------------------------
+  - name: members
+    label: Members
+    label_singular: Member
+    description: The founding-member cards on the Brands page carousel.
+    folder: src/content/members
+    create: true
+    format: json
+    slug: "{{order}}-{{brand}}"
+    summary: "{{brand}} — {{person}}"
+    sortable_fields: [order, brand]
+    fields:
+      - { name: brand, label: Brand name, widget: string }
+      - { name: person, label: Founder line, widget: string, hint: 'e.g. "Frances, founder"' }
+      - { name: line, label: One-liner, widget: string, hint: "Lowercase serif voice, e.g. 'sea salt, harvested by hand on the norfolk coast.'" }
+      - { name: place, label: Location, widget: string }
+      - { name: initials, label: Initials, widget: string, hint: "Shown on the placeholder when there is no photo, e.g. 'FR'" }
+      - { name: photo, label: Photo, widget: image, required: false, hint: "Optional. A placeholder shows when empty. Displays cropped to 330×235." }
+      - { name: order, label: Display order, widget: number, value_type: int, default: 99 }
+      - { name: published, label: Published, widget: boolean, default: true }
+
+  # ---- Partner tiers (gated pricing) ---------------------------------------
+  - name: tiers
+    label: Partner tiers
+    label_singular: Tier
+    description: Pricing tiers shown after the partner email gate is unlocked.
+    folder: src/content/tiers
+    create: true
+    format: json
+    slug: "{{order}}-{{name}}"
+    summary: "{{name}} — {{price}}"
+    sortable_fields: [order, name]
+    fields:
+      - { name: name, label: Name, widget: string }
+      - { name: price, label: Price, widget: string, hint: "e.g. £20k" }
+      - { name: priceNote, label: Price note, widget: string, hint: "e.g. 'per year · £24k from November'" }
+      - { name: features, label: Features, widget: list, field: { name: feature, label: Feature, widget: string } }
+      - { name: highlight, label: Highlight (lime card), widget: boolean, default: false }
+      - { name: badge, label: Badge text, widget: string, required: false, hint: "e.g. 'Founder rate'" }
+      - { name: order, label: Display order, widget: number, value_type: int, default: 99 }
+
+  # ---- Site settings (singletons) ------------------------------------------
+  - name: settings
+    label: Site settings
+    files:
+      - name: all
+        label: Site settings
+        file: src/content/settings/index.json
+        description: Contact details, the dinner card, the founder bio, member criteria and the pricing footnote.
+        fields:
+          - name: site
+            label: Site
+            widget: object
+            fields:
+              - { name: contactEmail, label: Contact email, widget: string }
+              - { name: launchDate, label: Live from, widget: string }
+              - { name: location, label: Location, widget: string }
+              - { name: dinnerHostCredit, label: Dinner host credit, widget: string }
+          - name: dinner
+            label: Founders dinner card
+            widget: object
+            fields:
+              - { name: when, label: When, widget: string }
+              - { name: where, label: Where, widget: string }
+              - { name: covers, label: The table, widget: string }
+          - name: founder
+            label: Behind it (Jeni)
+            widget: object
+            fields:
+              - { name: bio, label: Bio paragraph, widget: text }
+              - { name: portrait, label: Portrait, widget: image, required: false, hint: "4:5 portrait. A striped placeholder shows when empty." }
+          - name: criteria
+            label: Shape of a member
+            widget: object
+            fields:
+              - { name: revenue, label: Annual revenue, widget: string }
+              - { name: trading, label: Trading, widget: string }
+              - { name: runBy, label: Run by, widget: string }
+              - { name: capLine, label: Cap line, widget: string }
+          - name: pricing
+            label: Pricing footnote
+            widget: object
+            fields:
+              - { name: footnote, label: Footnote, widget: text }
