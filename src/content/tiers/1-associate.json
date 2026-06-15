@@ -1,0 +1,13 @@
+{
+  "name": "Associate",
+  "price": "£8k",
+  "priceNote": "per year",
+  "features": [
+    "40 warm introductions",
+    "One entry category",
+    "Light touch, year round",
+    "A page in the partner directory"
+  ],
+  "highlight": false,
+  "order": 1
+}

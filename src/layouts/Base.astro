@@ -1,0 +1,113 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  bodyBackground: string;
+  selectionBg: string;
+  selectionColor: string;
+  focusOutline?: string;
+  /** Extra <style> rules appended after the shared base (per-page media queries, keyframes). */
+  headStyle?: string;
+  path: string;
+}
+
+const {
+  title,
+  description,
+  bodyBackground,
+  selectionBg,
+  selectionColor,
+  focusOutline = '#1E1BD1',
+  headStyle = '',
+  path,
+} = Astro.props;
+
+const canonical = new URL(path, Astro.site).href;
+const ogImage = new URL('/og-default.svg', Astro.site).href;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500;1,600&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style set:html={`
+      html { scroll-behavior: smooth; }
+      body { margin: 0; background: ${bodyBackground}; }
+      * { box-sizing: border-box; }
+      ::selection { background: ${selectionBg}; color: ${selectionColor}; }
+      a { color: inherit; }
+      a:focus-visible, button:focus-visible { outline: 2px solid ${focusOutline}; outline-offset: 3px; border-radius: 2px; }
+      .pill-indigo:hover { background: #1814A8 !important; }
+      .pill-lime:hover { background: #DCEB8A !important; }
+      .pill-outline:hover { background: #FFFFFF !important; color: #14141C !important; }
+      .door-link { -webkit-tap-highlight-color: transparent; }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+      }
+      ${headStyle}
+    `} />
+  </head>
+  <body>
+    <slot />
+
+    <!-- Scroll-reveal: shared by every page. Content is visible without JS;
+         we only animate transform when an element enters the viewport. -->
+    <script>
+      const els = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+      els.forEach((el) => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce && 'animate' in Element.prototype) {
+        const vh = window.innerHeight || 800;
+        const seen = new Set<HTMLElement>();
+        const play = (el: HTMLElement) => {
+          if (seen.has(el)) return;
+          seen.add(el);
+          el.animate(
+            [{ transform: 'translateY(16px)' }, { transform: 'none' }],
+            { duration: 560, easing: 'cubic-bezier(0.22,1,0.36,1)', fill: 'none' }
+          );
+        };
+        requestAnimationFrame(() => {
+          els.forEach((el) => {
+            if (el.getBoundingClientRect().top < vh * 0.95) play(el);
+          });
+        });
+        window.addEventListener(
+          'scroll',
+          () => {
+            els.forEach((el) => {
+              if (el.getBoundingClientRect().top < vh * 0.9) play(el);
+            });
+          },
+          { passive: true }
+        );
+      }
+    </script>
+  </body>
+</html>

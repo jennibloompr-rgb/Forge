@@ -1,0 +1,26 @@
+{
+  "site": {
+    "contactEmail": "hello@weforgepartnerships.com",
+    "launchDate": "1 July 2026",
+    "location": "Norfolk, England",
+    "dinnerHostCredit": "By membership · set by our team"
+  },
+  "dinner": {
+    "when": "September 2026",
+    "where": "Norfolk",
+    "covers": "Eight covers"
+  },
+  "founder": {
+    "bio": "Ex Diageo, founder of Nocrudo, the UK's first non alcoholic nootropic cocktail range, now scaling to exit.",
+    "portrait": ""
+  },
+  "criteria": {
+    "revenue": "£250k to £1m",
+    "trading": "1 to 5 years",
+    "runBy": "The founder",
+    "capLine": "500 brands, capped. The founding 100 are signing up now."
+  },
+  "pricing": {
+    "footnote": "A one off welcome fee on signing, £250 to £1,500 by tier, locks your founder pricing for as long as you stay. A £150k corporate tier is there for a headline partnership."
+  }
+}
