@@ -10,7 +10,7 @@
 #  `github` backend with repo/branch — see the Decap docs.)
 backend:
   name: git-gateway
-  branch: main
+  branch: claude/friendly-cray-8inirh
 
 # Lets the owner preview/edit locally with `npx decap-server` during dev.
 local_backend: true

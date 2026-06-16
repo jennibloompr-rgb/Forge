@@ -46,6 +46,10 @@ const ogImage = new URL('/og-default.svg', Astro.site).href;
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
+    <!-- Netlify Identity: lets the owner's emailed CMS invite complete here and
+         redirect into /admin. Invisible to normal visitors. -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -72,6 +76,19 @@ const ogImage = new URL('/og-default.svg', Astro.site).href;
   </head>
   <body>
     <slot />
+
+    <!-- Complete a Netlify Identity invite/login by sending the owner to /admin. -->
+    <script is:inline>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', (user) => {
+          if (!user) {
+            window.netlifyIdentity.on('login', () => {
+              document.location.href = '/admin/';
+            });
+          }
+        });
+      }
+    </script>
 
     <!-- Scroll-reveal: shared by every page. Content is visible without JS;
          we only animate transform when an element enters the viewport. -->
