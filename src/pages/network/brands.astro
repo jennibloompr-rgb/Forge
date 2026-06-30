@@ -1,6 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
-import { getSettings, getMembers } from '../lib/content';
+import Base from '../../layouts/Base.astro';
+import { getSettings, getMembers } from '../../lib/content';
 
 const { site, criteria } = await getSettings();
 const members = await getMembers();
@@ -37,7 +37,7 @@ const headStyle = `
   bodyBackground="#FBFCF4"
   selectionBg="#1E1BD1"
   selectionColor="#EBF5A6"
-  path="/brands"
+  path="/network/brands"
   headStyle={headStyle}
 >
   <div style="font-family: 'Montserrat', -apple-system, sans-serif; color: #14141C; background: #FBFCF4; position: relative; overflow-x: hidden; -webkit-font-smoothing: antialiased;">
@@ -51,9 +51,9 @@ const headStyle = `
         </div>
         <div class="forge-nav-links" style="display: flex; align-items: center; gap: 32px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #44444F;">
           <a href="#membership" style="text-decoration: none;">Membership</a>
-          <a href="#yes" style="text-decoration: none;">Who we say yes to</a>
-          <a href="#members" style="text-decoration: none;">The members</a>
-          <a href="/" style="text-decoration: none;">← Back to the hall</a>
+          <a href="/network/partners" style="text-decoration: none;">Partners</a>
+          <a href="/network/buyer" style="text-decoration: none;">Meet the buyer</a>
+          <a href="/network" style="text-decoration: none;">← Back to the hall</a>
         </div>
         <a href="#apply" class="pill-indigo" style="text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 11px 20px; border-radius: 999px; background: #1E1BD1; color: #FFFFFF; transition: background 0.15s;">Apply to join</a>
       </div>
@@ -153,6 +153,23 @@ const headStyle = `
       </div>
     </section>
 
+    <!-- ============ MEET THE BUYER ============ -->
+    <section id="buyer" class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 100px 44px;">
+      <a href="/network/buyer" data-reveal style="text-decoration: none; color: inherit; display: block; background: #1E1BD1; border-radius: 20px; padding: 56px 52px; position: relative; overflow: hidden; box-shadow: 0 30px 70px rgba(30,27,209,0.22);">
+        <div class="forge-grid-2" style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center;">
+          <div>
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #EBF5A6; margin-bottom: 18px;">An event for members · Meet the buyer</div>
+            <h2 style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(28px, 3.8vw, 46px); line-height: 1.06; letter-spacing: -0.025em; color: #FFFFFF; margin: 0 0 14px; text-wrap: pretty;">50 qualified buyers. 30 brands. One day where orders happen.</h2>
+            <p style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: clamp(20px, 2.4vw, 27px); line-height: 1.22; color: #EBF5A6; margin: 0; max-width: 520px;">a curated buying day, built so the meetings actually land.</p>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 18px;">
+            <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 500; line-height: 1.65; color: rgba(255,255,255,0.82); margin: 0;">Members get first call on seats. Sit across the table from Waitrose, Ocado and the buyers worth your morning.</p>
+            <span class="pill-lime" style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 15px 26px; border-radius: 999px; background: #EBF5A6; color: #14141C;">See the day →</span>
+          </div>
+        </div>
+      </a>
+    </section>
+
     <!-- ============ APPLY / FOOTER ============ -->
     <footer id="apply" style="background: #14141C; color: #FFFFFF;">
       <div class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 96px 44px 52px;">
@@ -172,7 +189,7 @@ const headStyle = `
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; margin-top: 34px;">
           <a href="/" style="text-decoration: none; font-family: 'Arial Black', Helvetica, sans-serif; font-weight: 900; font-style: italic; font-size: 28px; letter-spacing: -0.05em; color: #EBF5A6;">TheForge</a>
           <div style="display: flex; flex-wrap: wrap; gap: 18px 30px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5);">
-            <a href="/" style="text-decoration: none;">← The hall</a>
+            <a href="/network" style="text-decoration: none;">← The hall</a>
             <span>© 2026 The Forge · Bloomco</span>
           </div>
         </div>

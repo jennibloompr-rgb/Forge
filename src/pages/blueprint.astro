@@ -1,0 +1,298 @@
+---
+import Base from '../layouts/Base.astro';
+import { getSettings } from '../lib/content';
+
+const { site } = await getSettings();
+const email = site.contactEmail ?? 'hello@weforgepartnerships.com';
+
+const whoFor = [
+  { title: 'You are already trading', body: 'A real brand with revenue, a product people buy and a story worth backing. Not an idea on a napkin.' },
+  { title: 'You need a six-figure sponsor', body: 'A headline partner for an event, a season, a launch or a cause, and you need it to actually close.' },
+  { title: 'You have no time to waste', body: 'You would rather we build the strategy and make the calls with you than learn sponsorship from scratch.' },
+];
+
+const phases = [
+  {
+    n: '01',
+    title: 'Audit & positioning',
+    body: 'We pull apart what you have — audience, assets, numbers, the lot — and turn it into a proposition a sponsor actually wants to buy.',
+    items: [] as { t: string; d: string }[],
+  },
+  {
+    n: '02',
+    title: 'The target list',
+    body: 'We build a ranked list of the brands most likely to say yes, with the right person named at each one.',
+    items: [],
+  },
+  {
+    n: '03',
+    title: 'The pitch',
+    body: 'We write and design everything you go to market with. Open each piece below.',
+    items: [
+      { t: 'The deck', d: 'A sponsor-ready pitch deck that leads with their return, not your logo.' },
+      { t: 'The one-pager', d: 'A leave-behind that survives being forwarded to the person who signs the cheque.' },
+      { t: 'The outreach sequence', d: 'The exact emails and follow-ups, written in your voice, ready to send.' },
+      { t: 'The numbers', d: 'Pricing, packages and the value model that justifies a six-figure ask.' },
+    ],
+  },
+  {
+    n: '04',
+    title: 'The outreach',
+    body: 'We run the campaign with you — introductions, sends, follow-ups — until you have live conversations with real decision-makers.',
+    items: [],
+  },
+  {
+    n: '05',
+    title: 'Negotiation & close',
+    body: 'We sit beside you through the back-and-forth, the redlines and the signature, so the deal lands at the number you need.',
+    items: [],
+  },
+];
+
+const receive = [
+  {
+    kicker: 'In the post',
+    title: 'A printed pack',
+    body: 'Your strategy, target list, pitch deck and one-pager, printed and bound. The whole campaign in your hands, not buried in a drive.',
+  },
+  {
+    kicker: 'Online',
+    title: 'A digital workspace',
+    body: 'Every asset, template and tracker in one shared workspace, kept live through the programme and yours to keep after.',
+  },
+];
+
+const headStyle = `
+  @keyframes forgeBlink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  .forge-phase[open] .forge-phase-chev { transform: rotate(45deg); }
+  .forge-acc[open] .forge-acc-chev { transform: rotate(90deg); }
+  summary { list-style: none; cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+  @media (max-width: 880px) {
+    .forge-nav-links { display: none !important; }
+    .forge-grid-2 { grid-template-columns: 1fr !important; }
+    .forge-grid-3 { grid-template-columns: 1fr !important; }
+    .forge-pad { padding-left: 22px !important; padding-right: 22px !important; }
+    .forge-hero-num { font-size: 40vw !important; }
+  }
+`;
+---
+
+<Base
+  title="The Sponsorship Blueprint — land a six-figure sponsor, guaranteed | The Forge"
+  description="A done-with-you sponsorship consultancy for food & drink brands. We build the strategy, deck and introductions with you and guarantee £100k in sponsorship, or your fee back in full."
+  bodyBackground="#FBFCF4"
+  selectionBg="#1E1BD1"
+  selectionColor="#EBF5A6"
+  path="/blueprint"
+  headStyle={headStyle}
+>
+  <div style="font-family: 'Montserrat', -apple-system, sans-serif; color: #14141C; background: #FBFCF4; position: relative; overflow-x: hidden; -webkit-font-smoothing: antialiased;">
+
+    <!-- ============ NAV (root site · lime) ============ -->
+    <nav style="position: sticky; top: 0; z-index: 100; background: rgba(235,245,166,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(20,20,28,0.1);">
+      <div class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 16px 44px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <a href="/" style="text-decoration: none; font-family: 'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900; font-style: italic; font-size: 25px; letter-spacing: -0.045em; color: #1E1BD1; line-height: 1;">TheForge</a>
+          <span style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: 17px; color: #44444F;">the blueprint</span>
+        </div>
+        <div class="forge-nav-links" style="display: flex; align-items: center; gap: 32px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #2C2C36;">
+          <a href="#guarantee" style="text-decoration: none;">The guarantee</a>
+          <a href="#who" style="text-decoration: none;">Who it is for</a>
+          <a href="#phases" style="text-decoration: none;">The programme</a>
+          <a href="#investment" style="text-decoration: none;">Investment</a>
+        </div>
+        <a href="#apply" class="pill-indigo" style="text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 11px 20px; border-radius: 999px; background: #1E1BD1; color: #FFFFFF; transition: background 0.15s;">Apply for a call</a>
+      </div>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <header style="background: linear-gradient(180deg, #EBF5A6 0%, #F4F8E3 100%); border-bottom: 1px solid rgba(20,20,28,0.08);">
+      <div class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 84px 44px 78px; text-align: center;">
+        <div data-reveal style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #1E1BD1; margin-bottom: 28px;">The Sponsorship Blueprint · Done with you</div>
+        <h1 data-reveal class="forge-hero-num" style="margin: 0; font-family: 'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900; font-style: italic; font-size: clamp(96px, 22vw, 300px); letter-spacing: -0.05em; line-height: 0.86; color: #1E1BD1;">£<span id="bp-count">100</span>k</h1>
+        <div data-reveal style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: clamp(26px, 4vw, 46px); line-height: 1.12; color: #1E1BD1; margin-top: 14px;">in sponsorship, or your fee back in full.</div>
+        <p data-reveal style="font-family: 'Montserrat', sans-serif; font-size: clamp(16px, 1.7vw, 19px); font-weight: 500; line-height: 1.65; color: #2C2C36; max-width: 600px; margin: 30px auto 0; text-wrap: pretty;">A done-with-you consultancy that takes you from "we should get a sponsor" to a signed six-figure deal. We build the strategy, write the pitch and make the introductions, with you, the whole way.</p>
+        <div data-reveal style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 36px;">
+          <a href="#apply" class="pill-indigo" style="text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 16px 30px; border-radius: 999px; background: #1E1BD1; color: #FFFFFF; transition: background 0.15s;">Apply for a discovery call</a>
+          <a href="#phases" class="pill-outline" style="text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 16px 30px; border-radius: 999px; background: transparent; border: 1.5px solid rgba(20,20,28,0.3); color: #14141C; transition: all 0.15s;">See the programme</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ THE GUARANTEE ============ -->
+    <section id="guarantee" class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 100px 44px;">
+      <div class="forge-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+        <div data-reveal>
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #1E1BD1; margin-bottom: 24px;">The guarantee</div>
+          <h2 style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(30px, 4.2vw, 52px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 18px; text-wrap: pretty;">We only win when you do. So we put it in writing.</h2>
+          <p style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.22; color: #1E1BD1; margin: 0 0 22px; max-width: 480px;">complete the programme, do the work with us, and land at least £100k in sponsorship.</p>
+          <p style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.7; color: #44444F; margin: 0; max-width: 480px; text-wrap: pretty;">If you do everything the Blueprint asks and still do not reach six figures, we refund your fee in full. No small print designed to wriggle out of it.</p>
+        </div>
+        <div data-reveal style="background: #1E1BD1; color: #FFFFFF; border-radius: 18px; padding: 48px 44px; box-shadow: 0 30px 70px rgba(30,27,209,0.22);">
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #EBF5A6; margin-bottom: 22px;">In plain terms</div>
+          <div style="display: flex; flex-direction: column; gap: 0;">
+            {[
+              ['You land £100k+', 'The Blueprint paid for itself many times over.'],
+              ['You fall short', 'You do the work, miss the mark, and we refund your fee.'],
+              ['Either way', 'You keep the strategy, the deck and the relationships.'],
+            ].map((row, i) => (
+              <div style={`display: flex; flex-direction: column; gap: 6px; padding: 18px 0; ${i < 2 ? 'border-bottom: 1px solid rgba(255,255,255,0.18);' : ''}`}>
+                <div style="font-family: 'Arial Black', Helvetica, sans-serif; font-weight: 900; font-style: italic; font-size: 20px; letter-spacing: -0.03em; color: #EBF5A6;">{row[0]}</div>
+                <div style="font-family: 'Montserrat', sans-serif; font-size: 14.5px; font-weight: 500; line-height: 1.6; color: rgba(255,255,255,0.82);">{row[1]}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHO IT IS FOR ============ -->
+    <section id="who" style="background: #FFFFFF; border-top: 1px solid rgba(20,20,28,0.08); border-bottom: 1px solid rgba(20,20,28,0.08);">
+      <div class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 100px 44px;">
+        <div data-reveal style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #1E1BD1; margin-bottom: 24px;">Who it is for</div>
+        <h2 data-reveal style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(30px, 4.2vw, 54px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 56px; max-width: 760px; text-wrap: pretty;">Built for trading brands that need money in, not a marketing course.</h2>
+        <div data-reveal class="forge-grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(20,20,28,0.1); border: 1px solid rgba(20,20,28,0.1); border-radius: 16px; overflow: hidden;">
+          {whoFor.map((c) => (
+            <div style="background: #FFFFFF; padding: 36px 32px;">
+              <div style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: 23px; color: #1E1BD1; margin-bottom: 12px;">{c.title}</div>
+              <p style="font-family: 'Montserrat', sans-serif; font-size: 14.5px; font-weight: 500; line-height: 1.65; color: #44444F; margin: 0;">{c.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE PROGRAMME ============ -->
+    <section id="phases" class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 100px 44px;">
+      <div data-reveal style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #1E1BD1; margin-bottom: 24px;">The programme</div>
+      <h2 data-reveal style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(30px, 4.2vw, 54px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 16px; max-width: 760px; text-wrap: pretty;">Five phases, from blank page to signed deal.</h2>
+      <p data-reveal style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: clamp(20px, 2.4vw, 28px); line-height: 1.22; color: #1E1BD1; margin: 0 0 50px; max-width: 560px;">every phase is done with you, never handed off.</p>
+
+      <div data-reveal style="display: flex; flex-direction: column; gap: 14px;">
+        {phases.map((p) => (
+          p.items.length > 0 ? (
+            <details class="forge-phase" style="background: #FFFFFF; border: 1px solid rgba(20,20,28,0.12); border-radius: 16px; overflow: hidden;">
+              <summary style="display: flex; align-items: flex-start; gap: 22px; padding: 30px 32px;">
+                <span style="font-family: 'Arial Black', Helvetica, sans-serif; font-weight: 900; font-style: italic; font-size: 28px; letter-spacing: -0.04em; color: #1E1BD1; line-height: 1; flex-shrink: 0;">{p.n}</span>
+                <span style="flex: 1;">
+                  <span style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.02em; margin-bottom: 6px;">{p.title}</span>
+                  <span style="display: block; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 500; line-height: 1.6; color: #44444F;">{p.body}</span>
+                </span>
+                <span class="forge-phase-chev" aria-hidden="true" style="flex-shrink: 0; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; color: #1E1BD1; font-size: 22px; font-weight: 300; transition: transform 0.25s; margin-top: 4px;">+</span>
+              </summary>
+              <div style="padding: 0 32px 30px 76px; display: flex; flex-direction: column; gap: 12px;">
+                {p.items.map((it) => (
+                  <details class="forge-acc" style="background: #FBFCF4; border: 1px solid rgba(20,20,28,0.1); border-radius: 12px;">
+                    <summary style="display: flex; align-items: center; gap: 14px; padding: 16px 20px;">
+                      <span class="forge-acc-chev" aria-hidden="true" style="color: #1E1BD1; font-size: 14px; transition: transform 0.2s;">▶</span>
+                      <span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px;">{it.t}</span>
+                    </summary>
+                    <p style="margin: 0; padding: 0 20px 18px 48px; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 500; line-height: 1.6; color: #44444F;">{it.d}</p>
+                  </details>
+                ))}
+              </div>
+            </details>
+          ) : (
+            <div style="display: flex; align-items: flex-start; gap: 22px; background: #FFFFFF; border: 1px solid rgba(20,20,28,0.12); border-radius: 16px; padding: 30px 32px;">
+              <span style="font-family: 'Arial Black', Helvetica, sans-serif; font-weight: 900; font-style: italic; font-size: 28px; letter-spacing: -0.04em; color: #1E1BD1; line-height: 1; flex-shrink: 0;">{p.n}</span>
+              <div style="flex: 1;">
+                <div style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.02em; margin-bottom: 6px;">{p.title}</div>
+                <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 500; line-height: 1.6; color: #44444F; margin: 0;">{p.body}</p>
+              </div>
+            </div>
+          )
+        ))}
+      </div>
+    </section>
+
+    <!-- ============ WHAT YOU RECEIVE ============ -->
+    <section id="receive" style="background: #EBF5A6; border-top: 1px solid rgba(20,20,28,0.08);">
+      <div class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 100px 44px;">
+        <div data-reveal style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #1E1BD1; margin-bottom: 24px;">What you receive</div>
+        <h2 data-reveal style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(30px, 4.2vw, 54px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 50px; max-width: 700px; text-wrap: pretty;">Something to hold, and somewhere to work.</h2>
+        <div data-reveal class="forge-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px;">
+          {receive.map((c) => (
+            <div style="background: #FFFFFF; border: 1px solid rgba(20,20,28,0.12); border-radius: 18px; padding: 42px 40px; box-shadow: 0 20px 50px rgba(20,20,28,0.08);">
+              <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #B7CE36; margin-bottom: 14px;">{c.kicker}</div>
+              <h3 style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 27px; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 14px;">{c.title}</h3>
+              <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 500; line-height: 1.65; color: #44444F; margin: 0;">{c.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE INVESTMENT ============ -->
+    <section id="investment" class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 100px 44px;">
+      <div class="forge-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+        <div data-reveal>
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #1E1BD1; margin-bottom: 24px;">The investment</div>
+          <h2 style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(30px, 4.2vw, 52px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 18px; text-wrap: pretty;">One fee. A six-figure target. Your money back if we miss.</h2>
+          <p style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.22; color: #1E1BD1; margin: 0; max-width: 480px;">the maths is simple: £10k in, £100k out, or nothing to pay.</p>
+        </div>
+        <div data-reveal style="background: #14141C; color: #FFFFFF; border-radius: 18px; padding: 44px 42px; position: relative; overflow: hidden; box-shadow: 0 30px 70px rgba(20,20,28,0.2);">
+          <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(30,27,209,0.4) 0%, rgba(20,20,28,0) 65%); pointer-events: none;"></div>
+          <div style="position: relative;">
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EBF5A6; margin-bottom: 18px;">The Blueprint</div>
+            <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span style="font-family: 'Arial Black', Helvetica, sans-serif; font-weight: 900; font-style: italic; font-size: 64px; line-height: 0.9; letter-spacing: -0.04em; color: #FFFFFF;">£10k</span>
+              <span style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.55);">one fee, done with you</span>
+            </div>
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; color: #EBF5A6; margin-bottom: 26px;">Backed by the £100k guarantee.</div>
+            <div style="display: flex; flex-direction: column; gap: 11px; font-family: 'Montserrat', sans-serif; font-size: 14.5px; font-weight: 500; color: rgba(255,255,255,0.8); line-height: 1.45;">
+              <div>The full five-phase programme</div>
+              <div>Strategy, target list, deck and one-pager</div>
+              <div>Outreach and negotiation, run with you</div>
+              <div>Printed pack and digital workspace</div>
+              <div>The £100k-or-your-fee-back guarantee</div>
+            </div>
+            <a href="#apply" class="pill-lime" style="display: block; text-align: center; margin-top: 30px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 16px 26px; border-radius: 999px; background: #EBF5A6; color: #14141C; transition: background 0.15s;">Apply for a discovery call</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER CTA ============ -->
+    <footer id="apply" style="background: #1E1BD1; color: #FFFFFF;">
+      <div class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 96px 44px 52px;">
+        <div data-reveal style="text-align: center; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.2);">
+          <h2 style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(32px, 5vw, 64px); line-height: 1.04; letter-spacing: -0.03em; margin: 0 auto 18px; max-width: 760px;">Ready to land a sponsor worth signing?</h2>
+          <p style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: clamp(22px, 3vw, 34px); line-height: 1.18; color: #EBF5A6; margin: 0 auto 34px; max-width: 560px;">we take on a handful of brands at a time. tell us about yours.</p>
+          <a href="#apply" class="pill-lime" style="text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 17px 34px; border-radius: 999px; background: #EBF5A6; color: #14141C; transition: background 0.15s; display: inline-block;">Apply for a discovery call</a>
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,0.6); margin-top: 18px;">We will reply with next steps. Application only — we say yes to a few.</div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; margin-top: 34px;">
+          <a href="/" style="text-decoration: none; font-family: 'Arial Black', Helvetica, sans-serif; font-weight: 900; font-style: italic; font-size: 28px; letter-spacing: -0.05em; color: #EBF5A6;">TheForge</a>
+          <div style="display: flex; flex-wrap: wrap; gap: 18px 30px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6);">
+            <a href="/" style="text-decoration: none;">Home</a>
+            <a href="/network" style="text-decoration: none;">The network</a>
+            <span>© 2026 The Forge · Bloomco</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Animated count up to 100 on load.
+    const el = document.getElementById('bp-count');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (el && !reduce) {
+      const target = 100;
+      const duration = 1200;
+      let start: number | null = null;
+      const ease = (t: number) => 1 - Math.pow(1 - t, 3);
+      const step = (ts: number) => {
+        if (start === null) start = ts;
+        const p = Math.min((ts - start) / duration, 1);
+        el.textContent = String(Math.round(ease(p) * target));
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = String(target);
+      };
+      el.textContent = '0';
+      requestAnimationFrame(step);
+    }
+  </script>
+</Base>
