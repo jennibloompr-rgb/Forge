@@ -8,8 +8,13 @@ export interface Props {
   focusOutline?: string;
   /** Extra <style> rules appended after the shared base (per-page media queries, keyframes). */
   headStyle?: string;
+  /** Optional override of the Google Fonts stylesheet href (e.g. Meet the Buyer uses a different pairing). */
+  fontHref?: string;
   path: string;
 }
+
+const DEFAULT_FONT_HREF =
+  'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500;1,600&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&display=swap';
 
 const {
   title,
@@ -19,6 +24,7 @@ const {
   selectionColor,
   focusOutline = '#1E1BD1',
   headStyle = '',
+  fontHref = DEFAULT_FONT_HREF,
   path,
 } = Astro.props;
 
@@ -53,10 +59,7 @@ const ogImage = new URL('/og-default.svg', Astro.site).href;
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500;1,600&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&display=swap"
-      rel="stylesheet"
-    />
+    <link href={fontHref} rel="stylesheet" />
 
     <style set:html={`
       html { scroll-behavior: smooth; }

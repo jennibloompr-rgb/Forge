@@ -3,14 +3,24 @@
 The production site for **The Forge**, a curated, application-only network for UK
 food & drink challenger brands and the service providers who partner with them.
 
-Three pages, recreated pixel-faithfully from the approved design handoff, plus a
+Six pages, recreated pixel-faithfully from the approved design handoff, plus a
 small friendly CMS so the owner can manage content without a developer, and an
 email-gated partner pricing section that captures leads.
 
+The site has two navigation systems and an intentional URL structure: a **root
+site** (the brand + the guaranteed sponsorship consultancy) and a **network
+section** under `/network/*` (the application-only membership and its events).
+
 ```
-/          → Home ("the hall")        — self-select via two doors, zero money language
-/brands    → For Brands (brand room)  — "free, by application", member carousel
-/partners  → For Partners (partner room) — full story, pricing behind an email gate
+ROOT SITE
+/                   → Home              — "the fork": Blueprint vs Network, what we do, about
+/blueprint          → The Blueprint     — £100k-guaranteed sponsorship consultancy, 5 phases, £10k
+
+NETWORK SECTION
+/network            → Network home ("the hall") — self-select via two doors
+/network/brands     → For Brands (brand room)   — "free, by application", member carousel
+/network/partners   → For Partners (partner room) — pricing behind an email gate
+/network/buyer      → Meet the Buyer    — curated buying day, £395, external Typeform application
 ```
 
 ## Stack

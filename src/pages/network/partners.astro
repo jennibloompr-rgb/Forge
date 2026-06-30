@@ -1,6 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
-import { getSettings } from '../lib/content';
+import Base from '../../layouts/Base.astro';
+import { getSettings } from '../../lib/content';
 
 const { site, criteria } = await getSettings();
 const email = site.contactEmail ?? 'hello@weforgepartnerships.com';
@@ -31,7 +31,7 @@ const headStyle = `
   selectionBg="#EBF5A6"
   selectionColor="#14141C"
   focusOutline="#EBF5A6"
-  path="/partners"
+  path="/network/partners"
   headStyle={headStyle}
 >
   <div style="font-family: 'Montserrat', -apple-system, sans-serif; color: #FFFFFF; background: #0A0A14; position: relative; overflow-x: hidden; -webkit-font-smoothing: antialiased;">
@@ -45,9 +45,9 @@ const headStyle = `
         </div>
         <div class="forge-nav-links" style="display: flex; align-items: center; gap: 32px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65);">
           <a href="#why" style="text-decoration: none;">Why partner</a>
-          <a href="#brands" style="text-decoration: none;">The brands</a>
           <a href="#details" style="text-decoration: none;">Partnership details</a>
-          <a href="/" style="text-decoration: none;">← Back to the hall</a>
+          <a href="/network/brands" style="text-decoration: none;">Brands</a>
+          <a href="/network" style="text-decoration: none;">← Back to the hall</a>
         </div>
         <a href={bookHref} class="pill-lime" style="text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 11px 20px; border-radius: 999px; background: #EBF5A6; color: #14141C; transition: background 0.15s;">Book a call</a>
       </div>
@@ -157,7 +157,7 @@ const headStyle = `
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; margin-top: 34px;">
           <a href="/" style="text-decoration: none; font-family: 'Arial Black', Helvetica, sans-serif; font-weight: 900; font-style: italic; font-size: 28px; letter-spacing: -0.05em; color: #EBF5A6;">TheForge</a>
           <div style="display: flex; flex-wrap: wrap; gap: 18px 30px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5);">
-            <a href="/" style="text-decoration: none;">← The hall</a>
+            <a href="/network" style="text-decoration: none;">← The hall</a>
             <span>© 2026 The Forge · Bloomco</span>
           </div>
         </div>
