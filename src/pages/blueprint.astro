@@ -1,6 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 
+// Discovery-call booking link (Calendly). All "Apply for a discovery call"
+// buttons open this in a new tab.
+const CALENDLY = 'https://calendly.com/jenibloom-work/meeting';
+
 // Copy and structure ported verbatim from the owner-approved design
 // (The Sponsorship Blueprint Page). Layout is hard-coded; the only
 // interactivity is the hero count-up and the Phase 3 expandable items.
@@ -123,7 +127,7 @@ const headStyle = `
         <p data-reveal style="font-family: 'Montserrat', sans-serif; font-size: clamp(16px, 1.8vw, 19px); font-weight: 500; line-height: 1.65; color: #44444F; margin: 30px auto 0; max-width: 620px; text-wrap: pretty;">A fixed fee, fixed scope, ninety day commercial consulting programme, with a money back guarantee.</p>
 
         <div data-reveal style="display: flex; justify-content: center; margin-top: 42px;">
-          <a href="#apply" class="pill-indigo" style="text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 17px 34px; border-radius: 999px; background: #1E1BD1; color: #FFFFFF; transition: background 0.15s;">Apply for a discovery call</a>
+          <a href={CALENDLY} target="_blank" rel="noopener" class="pill-indigo" style="text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 17px 34px; border-radius: 999px; background: #1E1BD1; color: #FFFFFF; transition: background 0.15s;">Apply for a discovery call</a>
         </div>
       </div>
     </header>
@@ -228,13 +232,31 @@ const headStyle = `
     </section>
 
     <!-- ============ THE INVESTMENT ============ -->
-    <section id="investment" style="background: #1E1BD1; color: #EBF5A6;">
-      <div class="bp-pad" style="max-width: 1180px; margin: 0 auto; padding: 116px 44px 124px; text-align: center;">
-        <div data-reveal style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #EBF5A6; margin-bottom: 40px;">The investment</div>
-        <div data-reveal style="font-family: 'Arial Black', Helvetica, sans-serif; font-weight: 900; font-style: italic; font-size: clamp(80px, 13vw, 168px); letter-spacing: -0.05em; line-height: 0.9; color: #FFFFFF; margin-bottom: 16px;"><span style="background: linear-gradient(transparent 30%, rgba(235,245,166,0.9) 30%, rgba(235,245,166,0.9) 82%, transparent 82%); -webkit-box-decoration-break: clone; box-decoration-break: clone; padding: 0 0.03em; color: #1E1BD1;">£10,000</span></div>
-        <p data-reveal style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.22; color: #EBF5A6; margin: 0 auto; max-width: 600px;">one fixed fee, backed by the £100k guarantee.</p>
-        <div style="display: flex; justify-content: center; margin-top: 40px;">
-          <a href="#apply" class="pill-lime" style="text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 17px 34px; border-radius: 999px; background: #EBF5A6; color: #1E1BD1; transition: background 0.15s;">Apply for a discovery call</a>
+    <section id="investment" class="bp-pad" style="max-width: 1180px; margin: 0 auto; padding: 110px 44px;">
+      <div class="bp-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+        <div data-reveal>
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #1E1BD1; margin-bottom: 24px;">The investment</div>
+          <h2 style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(30px, 4.2vw, 52px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 18px; text-wrap: pretty;">One fixed fee. A six-figure target. Your money back if we miss.</h2>
+          <p style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.22; color: #1E1BD1; margin: 0; max-width: 480px;">the maths is simple: £10k in, £100k out, or nothing to pay.</p>
+        </div>
+        <div data-reveal style="background: #14141C; color: #FFFFFF; border-radius: 18px; padding: 44px 42px; position: relative; overflow: hidden; box-shadow: 0 30px 70px rgba(20,20,28,0.2);">
+          <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(30,27,209,0.4) 0%, rgba(20,20,28,0) 65%); pointer-events: none;"></div>
+          <div style="position: relative;">
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #EBF5A6; margin-bottom: 18px;">The Blueprint</div>
+            <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+              <span style="font-family: 'Arial Black', Helvetica, sans-serif; font-weight: 900; font-style: italic; font-size: 64px; line-height: 0.9; letter-spacing: -0.04em; color: #FFFFFF;">£10k</span>
+              <span style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.55);">one fixed fee</span>
+            </div>
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; color: #EBF5A6; margin-bottom: 26px;">Backed by the £100k guarantee.</div>
+            <div style="display: flex; flex-direction: column; gap: 11px; font-family: 'Montserrat', sans-serif; font-size: 14.5px; font-weight: 500; color: rgba(255,255,255,0.8); line-height: 1.45;">
+              <div>The full five-phase programme</div>
+              <div>Onboarding, immersion day and blueprint build</div>
+              <div>Executive workshop, presented in person</div>
+              <div>Printed pack and live Airtable workspace</div>
+              <div>The £100k-or-your-fee-back guarantee</div>
+            </div>
+            <a href={CALENDLY} target="_blank" rel="noopener" class="pill-lime" style="display: block; text-align: center; margin-top: 30px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 16px 26px; border-radius: 999px; background: #EBF5A6; color: #14141C; transition: background 0.15s;">Apply for a discovery call</a>
+          </div>
         </div>
       </div>
     </section>
@@ -246,7 +268,7 @@ const headStyle = `
         <h2 data-reveal style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(34px, 5vw, 66px); line-height: 1.02; letter-spacing: -0.03em; margin: 0 auto; max-width: 14ch; text-wrap: balance;">Find the hundred thousand you are already sitting on.</h2>
         <p data-reveal style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: clamp(20px, 2.4vw, 28px); line-height: 1.24; color: #EBF5A6; margin: 26px auto 0; max-width: 640px;">this is a selective programme. we only work with organisations we believe can achieve the result.</p>
         <div data-reveal style="display: flex; justify-content: center; margin-top: 40px;">
-          <a href="#apply" class="pill-lime" style="text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 17px 34px; border-radius: 999px; background: #EBF5A6; color: #14141C; transition: background 0.15s;">Apply for a discovery call</a>
+          <a href={CALENDLY} target="_blank" rel="noopener" class="pill-lime" style="text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 17px 34px; border-radius: 999px; background: #EBF5A6; color: #14141C; transition: background 0.15s;">Apply for a discovery call</a>
         </div>
 
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; margin-top: 92px; padding-top: 34px; border-top: 1px solid rgba(255,255,255,0.16);">
