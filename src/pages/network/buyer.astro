@@ -11,19 +11,19 @@ const buyers = ['Waitrose', 'Ocado', 'CN Foods', 'ISS'];
 const details = [
   { n: '01', k: 'The buyers', v: '50 qualified', note: 'Vetted retail and foodservice buyers actively looking to list.' },
   { n: '02', k: 'The brands', v: '30 brands', note: 'Founder-run, by application, ready to supply at scale.' },
-  { n: '03', k: 'The format', v: 'One day', note: 'Structured meetings, not a noisy hall. Every slot is booked.' },
+  { n: '03', k: 'The format', v: 'One day', note: 'One room, face to face with buyers. Not a noisy hall.' },
   { n: '04', k: 'The place', v: 'A Georgian house', note: 'A private house in Norfolk, lunch and the room included.' },
 ];
 
 const steps = [
   { n: '01', title: 'Apply', body: 'Tell us about your brand, your range and where you already sell. It takes a few minutes.' },
-  { n: '02', title: 'Get matched', body: 'We review every application and pair the right brands with the right buyers for the day.' },
-  { n: '03', title: 'Meet the buyer', body: 'Arrive to a booked schedule of meetings with the people who place the orders.' },
+  { n: '02', title: 'Get your place', body: 'We review every application and select the brands that are ready to meet buyers on the day.' },
+  { n: '03', title: 'Meet the buyer', body: 'Spend the day in one room with the people who place the orders, meeting them face to face.' },
 ];
 
 const faqs = [
   { q: 'Who are the buyers?', a: 'Qualified retail and foodservice buyers with live listing budgets — names like Waitrose and Ocado among them. We vet every buyer before they walk in.' },
-  { q: 'How are meetings arranged?', a: 'We match brands and buyers ahead of the day based on fit, then build each person a booked schedule. You are not working a room hoping to be noticed.' },
+  { q: 'How does the day work?', a: 'Qualified buyers and selected brands spend the day together in one room. You meet buyers face to face — no giant hall, no working the floor hoping to be noticed.' },
   { q: 'What does it cost?', a: 'It is £395 per brand for the day, including your meetings, lunch and the venue. Buyers attend as our guests.' },
   { q: 'Where is it held?', a: 'A private Georgian house in Norfolk. Full travel and timing details go out to confirmed brands once applications close.' },
   { q: 'Do I have to be a Forge member?', a: 'No. Meet the Buyer is open by application to any founder-run brand ready to supply, members and non-members alike. Members get first call on seats.' },
@@ -47,7 +47,7 @@ const headStyle = `
 
 <Base
   title="Meet the Buyer — 50 qualified buyers, 30 brands, one day | The Forge"
-  description="A curated buying day for founder-run food & drink brands. 50 qualified buyers, 30 brands, booked meetings, one Georgian house in Norfolk. £395 per brand, by application."
+  description="A curated buying day for founder-run food & drink brands. 50 qualified buyers, 30 brands, one room in a Georgian house in Norfolk. £395 per brand, by application."
   bodyBackground="#FCFBF4"
   selectionBg="#1E1BD1"
   selectionColor="#FFFFFF"
@@ -78,7 +78,7 @@ const headStyle = `
     <header class="forge-pad" style="max-width: 1160px; margin: 0 auto; padding: 90px 44px 80px; text-align: center;">
       <div data-reveal style="font-family: 'Hanken Grotesk', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #1E1BD1; margin-bottom: 30px;">A Forge buying day · By application</div>
       <h1 data-reveal style="font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(40px, 7vw, 92px); line-height: 1.02; letter-spacing: -0.02em; margin: 0 auto; max-width: 1000px; color: #14141C; text-wrap: balance;">50 qualified buyers. 30 brands. <span style="font-style: italic; color: #1E1BD1;">One day where orders happen.</span></h1>
-      <p data-reveal style="font-family: 'Hanken Grotesk', sans-serif; font-size: clamp(16px, 1.7vw, 19px); font-weight: 500; line-height: 1.65; color: #44444F; max-width: 620px; margin: 32px auto 0; text-wrap: pretty;">Not a trade show. A curated buying day where founder-run brands sit across the table from the people who actually place the orders — with every meeting booked before you arrive.</p>
+      <p data-reveal style="font-family: 'Hanken Grotesk', sans-serif; font-size: clamp(16px, 1.7vw, 19px); font-weight: 500; line-height: 1.65; color: #44444F; max-width: 620px; margin: 32px auto 0; text-wrap: pretty;">Not a trade show. A curated buying day where founder-run brands meet the people who actually place the orders — face to face, in one room.</p>
       <div data-reveal style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 36px;">
         <a href={TYPEFORM} target="_blank" rel="noopener" class="pill-indigo" style="text-decoration: none; font-family: 'Hanken Grotesk', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 16px 30px; border-radius: 999px; background: #1E1BD1; color: #FFFFFF; transition: background 0.15s;">Apply now</a>
         <a href="#faqs" class="pill-outline" style="text-decoration: none; font-family: 'Hanken Grotesk', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 16px 30px; border-radius: 999px; background: transparent; border: 1.5px solid rgba(26,26,34,0.28); color: #14141C; transition: all 0.15s;">Read the FAQs</a>
@@ -106,8 +106,8 @@ const headStyle = `
           <p style="font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: clamp(21px, 2.6vw, 28px); line-height: 1.25; color: #1E1BD1; margin: 0;">we do the matching, so you do the selling.</p>
         </div>
         <div data-reveal>
-          <p style="font-family: 'Hanken Grotesk', sans-serif; font-size: 17px; font-weight: 500; line-height: 1.7; color: #3A3A45; margin: 0 0 18px;">Trade shows put you in a hall and wish you luck. Meet the Buyer does the opposite. We qualify every buyer, review every brand, and pre-arrange the meetings so each one is worth your morning.</p>
-          <p style="font-family: 'Hanken Grotesk', sans-serif; font-size: 17px; font-weight: 500; line-height: 1.7; color: #3A3A45; margin: 0;">You arrive to a booked schedule, sit down with people who can place an order, and leave with conversations that go somewhere — not a tote bag of business cards.</p>
+          <p style="font-family: 'Hanken Grotesk', sans-serif; font-size: 17px; font-weight: 500; line-height: 1.7; color: #3A3A45; margin: 0 0 18px;">Trade shows put you in a hall and wish you luck. Meet the Buyer does the opposite. We qualify every buyer and review every brand, so the whole room is worth your morning.</p>
+          <p style="font-family: 'Hanken Grotesk', sans-serif; font-size: 17px; font-weight: 500; line-height: 1.7; color: #3A3A45; margin: 0;">You spend the day in front of people who can place an order, and leave with conversations that go somewhere — not a tote bag of business cards.</p>
         </div>
       </div>
     </section>
@@ -117,7 +117,7 @@ const headStyle = `
       <div class="forge-pad" style="max-width: 1160px; margin: 0 auto; padding: 110px 44px; text-align: center;">
         <div data-reveal style="font-family: 'Hanken Grotesk', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 28px;">The opportunity</div>
         <h2 data-reveal style="font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(30px, 5vw, 62px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 auto; max-width: 900px; text-wrap: balance;">One good listing can change your year. <span style="font-style: italic; color: #EBF5A6;">This is a day built to win them.</span></h2>
-        <p data-reveal style="font-family: 'Hanken Grotesk', sans-serif; font-size: clamp(16px, 1.7vw, 19px); font-weight: 500; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; margin: 28px auto 0; text-wrap: pretty;">Thirty brands. Fifty buyers. A few hundred booked meetings. The shortest path between a founder-run brand and a shelf that matters.</p>
+        <p data-reveal style="font-family: 'Hanken Grotesk', sans-serif; font-size: clamp(16px, 1.7vw, 19px); font-weight: 500; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; margin: 28px auto 0; text-wrap: pretty;">Thirty brands. Fifty buyers. One room. The shortest path between a founder-run brand and a shelf that matters.</p>
       </div>
     </section>
 
@@ -201,7 +201,7 @@ const headStyle = `
           <div style="font-family: 'Hanken Grotesk', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #EBF5A6; margin-bottom: 18px;">The investment</div>
           <div style="font-family: 'Hanken Grotesk', sans-serif; font-weight: 800; font-size: clamp(64px, 12vw, 128px); line-height: 0.9; letter-spacing: -0.04em;">£395</div>
           <p style="font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: clamp(22px, 3vw, 32px); line-height: 1.2; color: #EBF5A6; margin: 16px 0 0;">per brand, for the whole day.</p>
-          <p style="font-family: 'Hanken Grotesk', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.65; color: rgba(255,255,255,0.78); max-width: 540px; margin: 22px auto 0;">Your booked meetings, lunch and the venue, included. Buyers attend as our guests. Apply by application — we hold thirty seats only.</p>
+          <p style="font-family: 'Hanken Grotesk', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.65; color: rgba(255,255,255,0.78); max-width: 540px; margin: 22px auto 0;">Your place for the day, lunch and the venue, included. Buyers attend as our guests. Apply by application — we hold thirty seats only.</p>
           <a href={TYPEFORM} target="_blank" rel="noopener" class="pill-lime" style="display: inline-block; margin-top: 32px; text-decoration: none; font-family: 'Hanken Grotesk', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 17px 34px; border-radius: 999px; background: #EBF5A6; color: #14141C; transition: background 0.15s;">Apply now</a>
         </div>
       </div>
