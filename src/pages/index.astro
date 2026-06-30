@@ -65,14 +65,15 @@ const headStyle = `
     <span id="top"></span>
 
     <!-- ============ HERO ============ -->
-    <header class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 90px 44px 84px; text-align: center;">
+    <header style="background: linear-gradient(180deg, #EBF5A6 0%, #F4F8E3 100%); border-bottom: 1px solid rgba(20,20,28,0.08);">
+      <div class="forge-pad" style="max-width: 1220px; margin: 0 auto; padding: 90px 44px 84px; text-align: center;">
       <div data-reveal style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #1E1BD1; margin-bottom: 40px;">Sponsorship consultancy · A curated network · Events</div>
 
       <h1 data-reveal class="forge-hero-wm" style="margin: 0; font-family: 'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900; font-style: italic; font-size: clamp(68px, 13vw, 184px); letter-spacing: -0.05em; line-height: 0.92; color: #1E1BD1;"><span style="background: linear-gradient(transparent 30%, #EBF5A6 30%, #EBF5A6 80%, transparent 80%); -webkit-box-decoration-break: clone; box-decoration-break: clone; padding: 0 0.04em;">TheForge</span></h1>
 
-      <div data-reveal style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: clamp(28px, 4.4vw, 50px); line-height: 1.1; color: #1E1BD1; margin-top: 22px;">we get good brands <span id="forge-typer" style="color: #B7CE36;"></span><span id="forge-caret" style="display: inline-block; width: 3px; height: 0.92em; background: #B7CE36; margin-left: 2px; vertical-align: -0.08em; animation: forgeBlink 1.05s step-end infinite;"></span></div>
+      <div data-reveal style="font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: clamp(28px, 4.4vw, 50px); line-height: 1.1; color: #1E1BD1; margin-top: 22px;">we turn your audience into <span id="forge-typer" style="color: #1E1BD1;"></span><span id="forge-caret" style="display: inline-block; width: 3px; height: 0.92em; background: #1E1BD1; margin-left: 2px; vertical-align: -0.08em; animation: forgeBlink 1.05s step-end infinite;"></span></div>
 
-      <p data-reveal style="font-family: 'Montserrat', sans-serif; font-size: clamp(16px, 1.7vw, 19px); font-weight: 500; line-height: 1.65; color: #3A3A45; max-width: 640px; margin: 38px auto 0; text-wrap: pretty;">Two ways to work with us, run by the same team. A done-with-you sponsorship consultancy that guarantees a six-figure deal, and a curated network for the UK's most considered food and drink challenger brands.</p>
+      <p data-reveal style="font-family: 'Montserrat', sans-serif; font-size: clamp(17px, 1.9vw, 22px); font-weight: 600; line-height: 1.5; color: #2C2C36; max-width: 600px; margin: 32px auto 0; text-wrap: pretty;">the deal making team, embedded in your business.</p>
 
       <div data-reveal style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 38px;">
         <a href="#fork" class="pill-indigo" style="text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 16px 28px; border-radius: 999px; background: #1E1BD1; color: #FFFFFF; transition: background 0.15s;">Choose your door</a>
@@ -82,6 +83,7 @@ const headStyle = `
         <span style="color: #1E1BD1;">By application.</span>
         <span>Curated by our team.</span>
         <span>Year round, not once a year.</span>
+      </div>
       </div>
     </header>
 
@@ -217,10 +219,10 @@ const headStyle = `
   </div>
 
   <script>
-    // Typewriter — "we get good brands ___"
+    // Typewriter — "we turn your audience into ___"
     const typer = document.querySelector<HTMLElement>('#forge-typer');
     if (typer && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const words = ['funded.', 'found.', 'in the room.', 'on the shelf.', 'the big yes.', 'a seat at the table.'];
+      const words = ['revenue.', 'partnerships.', 'retro agreements.', 'sponsorship.', 'content.'];
       let wi = 0, ci = 0, deleting = false;
       const tick = () => {
         const w = words[wi];
@@ -238,7 +240,7 @@ const headStyle = `
       };
       setTimeout(tick, 700);
     } else if (typer) {
-      typer.textContent = 'funded.';
+      typer.textContent = 'revenue.';
     }
 
     // The fork doors — signature swing-open interaction.
