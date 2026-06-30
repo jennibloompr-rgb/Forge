@@ -17,8 +17,10 @@ const details = [
 
 const steps = [
   { n: '01', title: 'Apply', body: 'Tell us about your brand, your range and where you already sell. It takes a few minutes.' },
-  { n: '02', title: 'Get your place', body: 'We review every application and select the brands that are ready to meet buyers on the day.' },
-  { n: '03', title: 'Meet the buyer', body: 'Spend the day in one room with the people who place the orders, meeting them face to face.' },
+  { n: '02', title: 'We review', body: 'We read every application and look at whether the day is a fit for where you are.' },
+  { n: '03', title: 'Eligibility call', body: 'A short retail-ready call to talk through your range, your capacity and your ambition.' },
+  { n: '04', title: 'We select', body: 'We confirm the brands joining the day and send you everything you need to prepare.' },
+  { n: '05', title: 'Meet the buyer', body: 'Spend the day in one room with the people who place the orders, face to face.' },
 ];
 
 const faqs = [
@@ -27,7 +29,7 @@ const faqs = [
   { q: 'What does it cost?', a: 'It is £395 per brand for the day, including your meetings, lunch and the venue. Buyers attend as our guests.' },
   { q: 'Where is it held?', a: 'A private Georgian house in Norfolk. Full travel and timing details go out to confirmed brands once applications close.' },
   { q: 'Do I have to be a Forge member?', a: 'No. Meet the Buyer is open by application to any founder-run brand ready to supply, members and non-members alike. Members get first call on seats.' },
-  { q: 'What if I am not ready to supply at scale?', a: 'Then this is not the right room yet, and we will say so. The day works because every brand in it can actually fulfil an order.' },
+  { q: 'What if I am not ready to supply at scale?', a: 'This is still the right room for you if that is your ambition. National buying decisions typically take 12 to 18 months to complete; regional buyers are much faster. We will talk it through with you on your retail-ready eligibility call.' },
 ];
 
 const headStyle = `
@@ -211,13 +213,13 @@ const headStyle = `
     <section style="background: #EBF5A6; border-top: 1px solid rgba(26,26,34,0.08);">
       <div class="forge-pad" style="max-width: 1160px; margin: 0 auto; padding: 100px 44px;">
         <div data-reveal style="font-family: 'Hanken Grotesk', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #1E1BD1; margin-bottom: 24px;">How to apply</div>
-        <h2 data-reveal style="font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 50px; max-width: 600px; color: #14141C; text-wrap: pretty;">Three steps to a seat at the table.</h2>
-        <div data-reveal class="mtb-grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+        <h2 data-reveal style="font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 50px; max-width: 600px; color: #14141C; text-wrap: pretty;">Five steps into the room.</h2>
+        <div data-reveal style="display: grid; grid-template-columns: repeat(auto-fit, minmax(186px, 1fr)); gap: 16px;">
           {steps.map((s) => (
-            <div style="background: #FFFFFF; border: 1px solid rgba(26,26,34,0.12); border-radius: 18px; padding: 38px 34px;">
-              <div style="font-family: 'Hanken Grotesk', sans-serif; font-weight: 800; font-size: 32px; letter-spacing: -0.03em; color: #1E1BD1; margin-bottom: 16px;">{s.n}</div>
-              <h3 style="font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 26px; line-height: 1.15; margin: 0 0 12px; color: #14141C;">{s.title}</h3>
-              <p style="font-family: 'Hanken Grotesk', sans-serif; font-size: 15px; font-weight: 500; line-height: 1.65; color: #44444F; margin: 0;">{s.body}</p>
+            <div style="background: #FFFFFF; border: 1px solid rgba(26,26,34,0.12); border-radius: 16px; padding: 30px 26px;">
+              <div style="font-family: 'Hanken Grotesk', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.03em; color: #1E1BD1; margin-bottom: 14px;">{s.n}</div>
+              <h3 style="font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 23px; line-height: 1.15; margin: 0 0 10px; color: #14141C;">{s.title}</h3>
+              <p style="font-family: 'Hanken Grotesk', sans-serif; font-size: 14.5px; font-weight: 500; line-height: 1.6; color: #44444F; margin: 0;">{s.body}</p>
             </div>
           ))}
         </div>
